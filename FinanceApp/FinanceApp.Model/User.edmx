@@ -1,0 +1,1273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NFMT_UserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccId" />
+          </Key>
+          <Property Name="AccId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccStatus" Type="int" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuthGroup">
+          <Key>
+            <PropertyRef Name="AuthGroupId" />
+          </Key>
+          <Property Name="AuthGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthGroupName" Type="varchar" MaxLength="800" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="TradeDirection" Type="int" />
+          <Property Name="TradeBorder" Type="int" />
+          <Property Name="ContractInOut" Type="int" />
+          <Property Name="ContractLimit" Type="int" />
+          <Property Name="CorpId" Type="int" />
+          <Property Name="AuthGroupStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuthGroupDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthGroupId" Type="int" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="DetailStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuthOperate">
+          <Key>
+            <PropertyRef Name="AuthOperateId" />
+          </Key>
+          <Property Name="AuthOperateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperateCode" Type="varchar" MaxLength="50" />
+          <Property Name="OperateName" Type="varchar" MaxLength="50" />
+          <Property Name="OperateType" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="AuthOperateStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuthOption">
+          <Key>
+            <PropertyRef Name="AuthOptionId" />
+          </Key>
+          <Property Name="AuthOptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionCode" Type="varchar" MaxLength="50" />
+          <Property Name="OptionName" Type="varchar" MaxLength="50" />
+          <Property Name="DataBaseName" Type="varchar" MaxLength="50" />
+          <Property Name="TableName" Type="varchar" MaxLength="50" />
+          <Property Name="RowId" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuthOptionDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthOptionId" Type="int" />
+          <Property Name="DetailCode" Type="varchar" MaxLength="50" />
+          <Property Name="DetailName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuthOptionDetailEmp_Ref">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="DetailId" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Bloc">
+          <Key>
+            <PropertyRef Name="BlocId" />
+          </Key>
+          <Property Name="BlocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlocName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BlocFullName" Type="varchar" MaxLength="400" />
+          <Property Name="BlocEname" Type="varchar" MaxLength="400" />
+          <Property Name="IsSelf" Type="bit" />
+          <Property Name="BlocStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="ContactCode" Type="varchar" MaxLength="80" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="80" />
+          <Property Name="ContactFax" Type="varchar" MaxLength="80" />
+          <Property Name="ContactAddress" Type="varchar" MaxLength="400" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="ContactStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CorpDept">
+          <Key>
+            <PropertyRef Name="CorpEmpId" />
+          </Key>
+          <Property Name="CorpEmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptId" Type="int" />
+          <Property Name="CorpId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="CorpDetailAttach">
+          <Key>
+            <PropertyRef Name="CorpDetailAttachId" />
+          </Key>
+          <Property Name="CorpDetailAttachId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DetailId" Type="int" />
+          <Property Name="AttachId" Type="int" />
+          <Property Name="AttachType" Type="int" />
+          <Property Name="CorpDetailAttachStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Corporation">
+          <Key>
+            <PropertyRef Name="CorpId" />
+          </Key>
+          <Property Name="CorpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="CorpCode" Type="varchar" MaxLength="80" />
+          <Property Name="CorpName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CorpEName" Type="varchar" MaxLength="80" />
+          <Property Name="TaxPayerId" Type="varchar" MaxLength="80" />
+          <Property Name="CorpFullName" Type="varchar" MaxLength="80" />
+          <Property Name="CorpFullEName" Type="varchar" MaxLength="200" />
+          <Property Name="CorpAddress" Type="varchar" MaxLength="400" />
+          <Property Name="CorpEAddress" Type="varchar" MaxLength="800" />
+          <Property Name="CorpTel" Type="varchar" MaxLength="40" />
+          <Property Name="CorpFax" Type="varchar" MaxLength="40" />
+          <Property Name="CorpZip" Type="varchar" MaxLength="20" />
+          <Property Name="CorpType" Type="int" />
+          <Property Name="IsSelf" Type="bit" />
+          <Property Name="CorpStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CorporationDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CorpId" Type="int" />
+          <Property Name="BusinessLicenseCode" Type="varchar" MaxLength="80" />
+          <Property Name="RegisteredCapital" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CurrencyId" Type="int" />
+          <Property Name="RegisteredDate" Type="datetime" />
+          <Property Name="CorpProperty" Type="varchar" MaxLength="200" />
+          <Property Name="BusinessScope" Type="varchar" MaxLength="500" />
+          <Property Name="TaxRegisteredCode" Type="varchar" MaxLength="200" />
+          <Property Name="OrganizationCode" Type="varchar" MaxLength="200" />
+          <Property Name="IsChildCorp" Type="bit" />
+          <Property Name="CorpZip" Type="varchar" MaxLength="20" />
+          <Property Name="CorpType" Type="int" />
+          <Property Name="IsSelf" Type="bit" />
+          <Property Name="Memo" Type="varchar" MaxLength="4000" />
+          <Property Name="DetailStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CorpId" Type="int" Nullable="false" />
+          <Property Name="DeptCode" Type="varchar" MaxLength="80" />
+          <Property Name="DeptName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DeptFullName" Type="varchar" MaxLength="80" />
+          <Property Name="DeptShort" Type="varchar" MaxLength="80" />
+          <Property Name="DeptType" Type="int" />
+          <Property Name="ParentLeve" Type="int" />
+          <Property Name="DeptStatus" Type="int" Nullable="false" />
+          <Property Name="DeptLevel" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DeptEmp">
+          <Key>
+            <PropertyRef Name="DeptEmpId" />
+          </Key>
+          <Property Name="DeptEmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmpAuthGroup">
+          <Key>
+            <PropertyRef Name="EmpAuthGroupId" />
+          </Key>
+          <Property Name="EmpAuthGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthGroupId" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="EmpCode" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="WorkStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmployeeContact">
+          <Key>
+            <PropertyRef Name="ECId" />
+          </Key>
+          <Property Name="ECId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="RefStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="EmpMenu">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmpRole">
+          <Key>
+            <PropertyRef Name="EmpRoleId" />
+          </Key>
+          <Property Name="EmpRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" MaxLength="80" />
+          <Property Name="MenuDesc" Type="varchar" MaxLength="400" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="FirstId" Type="int" />
+          <Property Name="Url" Type="varchar" MaxLength="400" />
+          <Property Name="MenuStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="80" />
+          <Property Name="RoleStatus" Type="int" />
+          <Property Name="RoleLevel" Type="int" />
+          <Property Name="ParentRole" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoleDept">
+          <Key>
+            <PropertyRef Name="RoleDeptId" />
+          </Key>
+          <Property Name="RoleDeptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="DeptId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoleDeptMenu">
+          <Key>
+            <PropertyRef Name="RoleDeptMenuID" />
+          </Key>
+          <Property Name="RoleDeptMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleDeptId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoleMenu">
+          <Key>
+            <PropertyRef Name="RoleMenuID" />
+          </Key>
+          <Property Name="RoleMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoleMenuOperate">
+          <Key>
+            <PropertyRef Name="RefID" />
+          </Key>
+          <Property Name="RefID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="OperateId" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="NFMT_UserModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthGroup" EntityType="Self.AuthGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthGroupDetail" EntityType="Self.AuthGroupDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthOperate" EntityType="Self.AuthOperate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthOption" EntityType="Self.AuthOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthOptionDetail" EntityType="Self.AuthOptionDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthOptionDetailEmp_Ref" EntityType="Self.AuthOptionDetailEmp_Ref" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bloc" EntityType="Self.Bloc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorpDept" EntityType="Self.CorpDept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorpDetailAttach" EntityType="Self.CorpDetailAttach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Corporation" EntityType="Self.Corporation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorporationDetail" EntityType="Self.CorporationDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeptEmp" EntityType="Self.DeptEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpAuthGroup" EntityType="Self.EmpAuthGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeContact" EntityType="Self.EmployeeContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpMenu" EntityType="Self.EmpMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpRole" EntityType="Self.EmpRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDept" EntityType="Self.RoleDept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleDeptMenu" EntityType="Self.RoleDeptMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMenuOperate" EntityType="Self.RoleMenuOperate" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NFMT_UserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccId" />
+          </Key>
+          <Property Name="AccId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccStatus" Type="Int32" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AuthGroup">
+          <Key>
+            <PropertyRef Name="AuthGroupId" />
+          </Key>
+          <Property Name="AuthGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthGroupName" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="TradeDirection" Type="Int32" />
+          <Property Name="TradeBorder" Type="Int32" />
+          <Property Name="ContractInOut" Type="Int32" />
+          <Property Name="ContractLimit" Type="Int32" />
+          <Property Name="CorpId" Type="Int32" />
+          <Property Name="AuthGroupStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AuthGroupDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthGroupId" Type="Int32" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="DetailStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AuthOperate">
+          <Key>
+            <PropertyRef Name="AuthOperateId" />
+          </Key>
+          <Property Name="AuthOperateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperateType" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="AuthOperateStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AuthOption">
+          <Key>
+            <PropertyRef Name="AuthOptionId" />
+          </Key>
+          <Property Name="AuthOptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataBaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RowId" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AuthOptionDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthOptionId" Type="Int32" />
+          <Property Name="DetailCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DetailName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AuthOptionDetailEmp_Ref">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="DetailId" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Bloc">
+          <Key>
+            <PropertyRef Name="BlocId" />
+          </Key>
+          <Property Name="BlocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlocName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlocFullName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="BlocEname" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelf" Type="Boolean" />
+          <Property Name="BlocStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ContactFax" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ContactAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="ContactStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CorpDept">
+          <Key>
+            <PropertyRef Name="CorpEmpId" />
+          </Key>
+          <Property Name="CorpEmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="CorpId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CorpDetailAttach">
+          <Key>
+            <PropertyRef Name="CorpDetailAttachId" />
+          </Key>
+          <Property Name="CorpDetailAttachId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DetailId" Type="Int32" />
+          <Property Name="AttachId" Type="Int32" />
+          <Property Name="AttachType" Type="Int32" />
+          <Property Name="CorpDetailAttachStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Corporation">
+          <Key>
+            <PropertyRef Name="CorpId" />
+          </Key>
+          <Property Name="CorpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="CorpCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CorpName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorpEName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="TaxPayerId" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CorpFullName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CorpFullEName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CorpAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="CorpEAddress" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="CorpTel" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CorpFax" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CorpZip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CorpType" Type="Int32" />
+          <Property Name="IsSelf" Type="Boolean" />
+          <Property Name="CorpStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CorporationDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CorpId" Type="Int32" />
+          <Property Name="BusinessLicenseCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="RegisteredCapital" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+          <Property Name="CorpProperty" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessScope" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TaxRegisteredCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsChildCorp" Type="Boolean" />
+          <Property Name="CorpZip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CorpType" Type="Int32" />
+          <Property Name="IsSelf" Type="Boolean" />
+          <Property Name="Memo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DetailStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CorpId" Type="Int32" Nullable="false" />
+          <Property Name="DeptCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DeptName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeptFullName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DeptShort" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DeptType" Type="Int32" />
+          <Property Name="ParentLeve" Type="Int32" />
+          <Property Name="DeptStatus" Type="Int32" Nullable="false" />
+          <Property Name="DeptLevel" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DeptEmp">
+          <Key>
+            <PropertyRef Name="DeptEmpId" />
+          </Key>
+          <Property Name="DeptEmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EmpAuthGroup">
+          <Key>
+            <PropertyRef Name="EmpAuthGroupId" />
+          </Key>
+          <Property Name="EmpAuthGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthGroupId" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="EmpCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="BirthDay" Type="DateTime" Precision="3" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WorkStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EmployeeContact">
+          <Key>
+            <PropertyRef Name="ECId" />
+          </Key>
+          <Property Name="ECId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="RefStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmpMenu">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EmpRole">
+          <Key>
+            <PropertyRef Name="EmpRoleId" />
+          </Key>
+          <Property Name="EmpRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="MenuName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="MenuDesc" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="FirstId" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="MenuStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="RoleStatus" Type="Int32" />
+          <Property Name="RoleLevel" Type="Int32" />
+          <Property Name="ParentRole" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RoleDept">
+          <Key>
+            <PropertyRef Name="RoleDeptId" />
+          </Key>
+          <Property Name="RoleDeptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RoleDeptMenu">
+          <Key>
+            <PropertyRef Name="RoleDeptMenuID" />
+          </Key>
+          <Property Name="RoleDeptMenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleDeptId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RoleMenu">
+          <Key>
+            <PropertyRef Name="RoleMenuID" />
+          </Key>
+          <Property Name="RoleMenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RoleMenuOperate">
+          <Key>
+            <PropertyRef Name="RefID" />
+          </Key>
+          <Property Name="RefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="OperateId" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="NFMT_User_ConnectStr" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="AuthGroup" EntityType="Self.AuthGroup" />
+          <EntitySet Name="AuthGroupDetail" EntityType="Self.AuthGroupDetail" />
+          <EntitySet Name="AuthOperate" EntityType="Self.AuthOperate" />
+          <EntitySet Name="AuthOption" EntityType="Self.AuthOption" />
+          <EntitySet Name="AuthOptionDetail" EntityType="Self.AuthOptionDetail" />
+          <EntitySet Name="AuthOptionDetailEmp_Ref" EntityType="Self.AuthOptionDetailEmp_Ref" />
+          <EntitySet Name="Bloc" EntityType="Self.Bloc" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="CorpDept" EntityType="Self.CorpDept" />
+          <EntitySet Name="CorpDetailAttach" EntityType="Self.CorpDetailAttach" />
+          <EntitySet Name="Corporation" EntityType="Self.Corporation" />
+          <EntitySet Name="CorporationDetail" EntityType="Self.CorporationDetail" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="DeptEmp" EntityType="Self.DeptEmp" />
+          <EntitySet Name="EmpAuthGroup" EntityType="Self.EmpAuthGroup" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeContact" EntityType="Self.EmployeeContact" />
+          <EntitySet Name="EmpMenu" EntityType="Self.EmpMenu" />
+          <EntitySet Name="EmpRole" EntityType="Self.EmpRole" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="RoleDept" EntityType="Self.RoleDept" />
+          <EntitySet Name="RoleDeptMenu" EntityType="Self.RoleDeptMenu" />
+          <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" />
+          <EntitySet Name="RoleMenuOperate" EntityType="Self.RoleMenuOperate" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NFMT_UserModelStoreContainer" CdmEntityContainer="NFMT_User_ConnectStr">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthGroup">
+            <EntityTypeMapping TypeName="NFMT_UserModel.AuthGroup">
+              <MappingFragment StoreEntitySet="AuthGroup">
+                <ScalarProperty Name="AuthGroupId" ColumnName="AuthGroupId" />
+                <ScalarProperty Name="AuthGroupName" ColumnName="AuthGroupName" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="TradeDirection" ColumnName="TradeDirection" />
+                <ScalarProperty Name="TradeBorder" ColumnName="TradeBorder" />
+                <ScalarProperty Name="ContractInOut" ColumnName="ContractInOut" />
+                <ScalarProperty Name="ContractLimit" ColumnName="ContractLimit" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="AuthGroupStatus" ColumnName="AuthGroupStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthGroupDetail">
+            <EntityTypeMapping TypeName="NFMT_UserModel.AuthGroupDetail">
+              <MappingFragment StoreEntitySet="AuthGroupDetail">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="AuthGroupId" ColumnName="AuthGroupId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthOperate">
+            <EntityTypeMapping TypeName="NFMT_UserModel.AuthOperate">
+              <MappingFragment StoreEntitySet="AuthOperate">
+                <ScalarProperty Name="AuthOperateId" ColumnName="AuthOperateId" />
+                <ScalarProperty Name="OperateCode" ColumnName="OperateCode" />
+                <ScalarProperty Name="OperateName" ColumnName="OperateName" />
+                <ScalarProperty Name="OperateType" ColumnName="OperateType" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="AuthOperateStatus" ColumnName="AuthOperateStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthOption">
+            <EntityTypeMapping TypeName="NFMT_UserModel.AuthOption">
+              <MappingFragment StoreEntitySet="AuthOption">
+                <ScalarProperty Name="AuthOptionId" ColumnName="AuthOptionId" />
+                <ScalarProperty Name="OptionCode" ColumnName="OptionCode" />
+                <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+                <ScalarProperty Name="DataBaseName" ColumnName="DataBaseName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthOptionDetail">
+            <EntityTypeMapping TypeName="NFMT_UserModel.AuthOptionDetail">
+              <MappingFragment StoreEntitySet="AuthOptionDetail">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="AuthOptionId" ColumnName="AuthOptionId" />
+                <ScalarProperty Name="DetailCode" ColumnName="DetailCode" />
+                <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthOptionDetailEmp_Ref">
+            <EntityTypeMapping TypeName="NFMT_UserModel.AuthOptionDetailEmp_Ref">
+              <MappingFragment StoreEntitySet="AuthOptionDetailEmp_Ref">
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bloc">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Bloc">
+              <MappingFragment StoreEntitySet="Bloc">
+                <ScalarProperty Name="BlocId" ColumnName="BlocId" />
+                <ScalarProperty Name="BlocName" ColumnName="BlocName" />
+                <ScalarProperty Name="BlocFullName" ColumnName="BlocFullName" />
+                <ScalarProperty Name="BlocEname" ColumnName="BlocEname" />
+                <ScalarProperty Name="IsSelf" ColumnName="IsSelf" />
+                <ScalarProperty Name="BlocStatus" ColumnName="BlocStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactCode" ColumnName="ContactCode" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ContactStatus" ColumnName="ContactStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorpDept">
+            <EntityTypeMapping TypeName="NFMT_UserModel.CorpDept">
+              <MappingFragment StoreEntitySet="CorpDept">
+                <ScalarProperty Name="CorpEmpId" ColumnName="CorpEmpId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorpDetailAttach">
+            <EntityTypeMapping TypeName="NFMT_UserModel.CorpDetailAttach">
+              <MappingFragment StoreEntitySet="CorpDetailAttach">
+                <ScalarProperty Name="CorpDetailAttachId" ColumnName="CorpDetailAttachId" />
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="AttachId" ColumnName="AttachId" />
+                <ScalarProperty Name="AttachType" ColumnName="AttachType" />
+                <ScalarProperty Name="CorpDetailAttachStatus" ColumnName="CorpDetailAttachStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Corporation">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Corporation">
+              <MappingFragment StoreEntitySet="Corporation">
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CorpCode" ColumnName="CorpCode" />
+                <ScalarProperty Name="CorpName" ColumnName="CorpName" />
+                <ScalarProperty Name="CorpEName" ColumnName="CorpEName" />
+                <ScalarProperty Name="TaxPayerId" ColumnName="TaxPayerId" />
+                <ScalarProperty Name="CorpFullName" ColumnName="CorpFullName" />
+                <ScalarProperty Name="CorpFullEName" ColumnName="CorpFullEName" />
+                <ScalarProperty Name="CorpAddress" ColumnName="CorpAddress" />
+                <ScalarProperty Name="CorpEAddress" ColumnName="CorpEAddress" />
+                <ScalarProperty Name="CorpTel" ColumnName="CorpTel" />
+                <ScalarProperty Name="CorpFax" ColumnName="CorpFax" />
+                <ScalarProperty Name="CorpZip" ColumnName="CorpZip" />
+                <ScalarProperty Name="CorpType" ColumnName="CorpType" />
+                <ScalarProperty Name="IsSelf" ColumnName="IsSelf" />
+                <ScalarProperty Name="CorpStatus" ColumnName="CorpStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorporationDetail">
+            <EntityTypeMapping TypeName="NFMT_UserModel.CorporationDetail">
+              <MappingFragment StoreEntitySet="CorporationDetail">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="BusinessLicenseCode" ColumnName="BusinessLicenseCode" />
+                <ScalarProperty Name="RegisteredCapital" ColumnName="RegisteredCapital" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+                <ScalarProperty Name="CorpProperty" ColumnName="CorpProperty" />
+                <ScalarProperty Name="BusinessScope" ColumnName="BusinessScope" />
+                <ScalarProperty Name="TaxRegisteredCode" ColumnName="TaxRegisteredCode" />
+                <ScalarProperty Name="OrganizationCode" ColumnName="OrganizationCode" />
+                <ScalarProperty Name="IsChildCorp" ColumnName="IsChildCorp" />
+                <ScalarProperty Name="CorpZip" ColumnName="CorpZip" />
+                <ScalarProperty Name="CorpType" ColumnName="CorpType" />
+                <ScalarProperty Name="IsSelf" ColumnName="IsSelf" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptFullName" ColumnName="DeptFullName" />
+                <ScalarProperty Name="DeptShort" ColumnName="DeptShort" />
+                <ScalarProperty Name="DeptType" ColumnName="DeptType" />
+                <ScalarProperty Name="ParentLeve" ColumnName="ParentLeve" />
+                <ScalarProperty Name="DeptStatus" ColumnName="DeptStatus" />
+                <ScalarProperty Name="DeptLevel" ColumnName="DeptLevel" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeptEmp">
+            <EntityTypeMapping TypeName="NFMT_UserModel.DeptEmp">
+              <MappingFragment StoreEntitySet="DeptEmp">
+                <ScalarProperty Name="DeptEmpId" ColumnName="DeptEmpId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpAuthGroup">
+            <EntityTypeMapping TypeName="NFMT_UserModel.EmpAuthGroup">
+              <MappingFragment StoreEntitySet="EmpAuthGroup">
+                <ScalarProperty Name="EmpAuthGroupId" ColumnName="EmpAuthGroupId" />
+                <ScalarProperty Name="AuthGroupId" ColumnName="AuthGroupId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WorkStatus" ColumnName="WorkStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeContact">
+            <EntityTypeMapping TypeName="NFMT_UserModel.EmployeeContact">
+              <MappingFragment StoreEntitySet="EmployeeContact">
+                <ScalarProperty Name="ECId" ColumnName="ECId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpMenu">
+            <EntityTypeMapping TypeName="NFMT_UserModel.EmpMenu">
+              <MappingFragment StoreEntitySet="EmpMenu">
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpRole">
+            <EntityTypeMapping TypeName="NFMT_UserModel.EmpRole">
+              <MappingFragment StoreEntitySet="EmpRole">
+                <ScalarProperty Name="EmpRoleId" ColumnName="EmpRoleId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuDesc" ColumnName="MenuDesc" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="FirstId" ColumnName="FirstId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="NFMT_UserModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleStatus" ColumnName="RoleStatus" />
+                <ScalarProperty Name="RoleLevel" ColumnName="RoleLevel" />
+                <ScalarProperty Name="ParentRole" ColumnName="ParentRole" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDept">
+            <EntityTypeMapping TypeName="NFMT_UserModel.RoleDept">
+              <MappingFragment StoreEntitySet="RoleDept">
+                <ScalarProperty Name="RoleDeptId" ColumnName="RoleDeptId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleDeptMenu">
+            <EntityTypeMapping TypeName="NFMT_UserModel.RoleDeptMenu">
+              <MappingFragment StoreEntitySet="RoleDeptMenu">
+                <ScalarProperty Name="RoleDeptMenuID" ColumnName="RoleDeptMenuID" />
+                <ScalarProperty Name="RoleDeptId" ColumnName="RoleDeptId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMenu">
+            <EntityTypeMapping TypeName="NFMT_UserModel.RoleMenu">
+              <MappingFragment StoreEntitySet="RoleMenu">
+                <ScalarProperty Name="RoleMenuID" ColumnName="RoleMenuID" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMenuOperate">
+            <EntityTypeMapping TypeName="NFMT_UserModel.RoleMenuOperate">
+              <MappingFragment StoreEntitySet="RoleMenuOperate">
+                <ScalarProperty Name="RefID" ColumnName="RefID" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="OperateId" ColumnName="OperateId" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

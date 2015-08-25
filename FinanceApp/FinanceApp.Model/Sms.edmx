@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NFMT_SmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sm_Sms">
+          <Key>
+            <PropertyRef Name="SmsId" />
+          </Key>
+          <Property Name="SmsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SmsTypeId" Type="int" />
+          <Property Name="SmsHead" Type="varchar" MaxLength="80" />
+          <Property Name="SmsBody" Type="varchar" MaxLength="200" />
+          <Property Name="SmsRelTime" Type="datetime" />
+          <Property Name="SmsStatus" Type="int" />
+          <Property Name="SmsLevel" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="SourceId" Type="int" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sm_SmsConfig">
+          <Key>
+            <PropertyRef Name="SmsConfigId" />
+          </Key>
+          <Property Name="SmsConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="varchar" MaxLength="80" />
+          <Property Name="ConfigStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Sm_SmsDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SmsId" Type="int" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="ReadTime" Type="datetime" />
+          <Property Name="DetailStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Sm_SmsParameter">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Name="ParameterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SmsTypeId" Type="int" />
+          <Property Name="ParameterType" Type="varchar" MaxLength="20" />
+          <Property Name="ParamterValue" Type="varchar" MaxLength="50" />
+          <Property Name="ParameterStatus" Type="int" />
+          <Property Name="IsType" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sm_SmsType">
+          <Key>
+            <PropertyRef Name="SmsTypeId" />
+          </Key>
+          <Property Name="SmsTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="200" />
+          <Property Name="ListUrl" Type="varchar" MaxLength="200" />
+          <Property Name="ViewUrl" Type="varchar" MaxLength="200" />
+          <Property Name="SmsTypeStatus" Type="int" />
+          <Property Name="SourceBaseName" Type="varchar" MaxLength="50" />
+          <Property Name="SourceTableName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="NFMT_SmsModelStoreContainer">
+          <EntitySet Name="Sm_Sms" EntityType="Self.Sm_Sms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sm_SmsConfig" EntityType="Self.Sm_SmsConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sm_SmsDetail" EntityType="Self.Sm_SmsDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sm_SmsParameter" EntityType="Self.Sm_SmsParameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sm_SmsType" EntityType="Self.Sm_SmsType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NFMT_SmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sm_Sms">
+          <Key>
+            <PropertyRef Name="SmsId" />
+          </Key>
+          <Property Name="SmsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SmsTypeId" Type="Int32" />
+          <Property Name="SmsHead" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="SmsBody" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SmsRelTime" Type="DateTime" Precision="3" />
+          <Property Name="SmsStatus" Type="Int32" />
+          <Property Name="SmsLevel" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="SourceId" Type="Int32" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sm_SmsConfig">
+          <Key>
+            <PropertyRef Name="SmsConfigId" />
+          </Key>
+          <Property Name="SmsConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ConfigStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Sm_SmsDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SmsId" Type="Int32" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="ReadTime" Type="DateTime" Precision="3" />
+          <Property Name="DetailStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Sm_SmsParameter">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Name="ParameterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SmsTypeId" Type="Int32" />
+          <Property Name="ParameterType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ParamterValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParameterStatus" Type="Int32" />
+          <Property Name="IsType" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Sm_SmsType">
+          <Key>
+            <PropertyRef Name="SmsTypeId" />
+          </Key>
+          <Property Name="SmsTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ListUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ViewUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SmsTypeStatus" Type="Int32" />
+          <Property Name="SourceBaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SourceTableName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="NFMT_Sms_ConnectStr" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sm_Sms" EntityType="Self.Sm_Sms" />
+          <EntitySet Name="Sm_SmsConfig" EntityType="Self.Sm_SmsConfig" />
+          <EntitySet Name="Sm_SmsDetail" EntityType="Self.Sm_SmsDetail" />
+          <EntitySet Name="Sm_SmsParameter" EntityType="Self.Sm_SmsParameter" />
+          <EntitySet Name="Sm_SmsType" EntityType="Self.Sm_SmsType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NFMT_SmsModelStoreContainer" CdmEntityContainer="NFMT_Sms_ConnectStr">
+          <EntitySetMapping Name="Sm_Sms">
+            <EntityTypeMapping TypeName="NFMT_SmsModel.Sm_Sms">
+              <MappingFragment StoreEntitySet="Sm_Sms">
+                <ScalarProperty Name="SmsId" ColumnName="SmsId" />
+                <ScalarProperty Name="SmsTypeId" ColumnName="SmsTypeId" />
+                <ScalarProperty Name="SmsHead" ColumnName="SmsHead" />
+                <ScalarProperty Name="SmsBody" ColumnName="SmsBody" />
+                <ScalarProperty Name="SmsRelTime" ColumnName="SmsRelTime" />
+                <ScalarProperty Name="SmsStatus" ColumnName="SmsStatus" />
+                <ScalarProperty Name="SmsLevel" ColumnName="SmsLevel" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sm_SmsConfig">
+            <EntityTypeMapping TypeName="NFMT_SmsModel.Sm_SmsConfig">
+              <MappingFragment StoreEntitySet="Sm_SmsConfig">
+                <ScalarProperty Name="SmsConfigId" ColumnName="SmsConfigId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="ConfigStatus" ColumnName="ConfigStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sm_SmsDetail">
+            <EntityTypeMapping TypeName="NFMT_SmsModel.Sm_SmsDetail">
+              <MappingFragment StoreEntitySet="Sm_SmsDetail">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="SmsId" ColumnName="SmsId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="ReadTime" ColumnName="ReadTime" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sm_SmsParameter">
+            <EntityTypeMapping TypeName="NFMT_SmsModel.Sm_SmsParameter">
+              <MappingFragment StoreEntitySet="Sm_SmsParameter">
+                <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+                <ScalarProperty Name="SmsTypeId" ColumnName="SmsTypeId" />
+                <ScalarProperty Name="ParameterType" ColumnName="ParameterType" />
+                <ScalarProperty Name="ParamterValue" ColumnName="ParamterValue" />
+                <ScalarProperty Name="ParameterStatus" ColumnName="ParameterStatus" />
+                <ScalarProperty Name="IsType" ColumnName="IsType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sm_SmsType">
+            <EntityTypeMapping TypeName="NFMT_SmsModel.Sm_SmsType">
+              <MappingFragment StoreEntitySet="Sm_SmsType">
+                <ScalarProperty Name="SmsTypeId" ColumnName="SmsTypeId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ListUrl" ColumnName="ListUrl" />
+                <ScalarProperty Name="ViewUrl" ColumnName="ViewUrl" />
+                <ScalarProperty Name="SmsTypeStatus" ColumnName="SmsTypeStatus" />
+                <ScalarProperty Name="SourceBaseName" ColumnName="SourceBaseName" />
+                <ScalarProperty Name="SourceTableName" ColumnName="SourceTableName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

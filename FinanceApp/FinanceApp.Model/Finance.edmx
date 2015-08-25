@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FinancingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Fin_PledgeApply">
+          <Key>
+            <PropertyRef Name="PledgeApplyId" />
+          </Key>
+          <Property Name="PledgeApplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PledgeApplyNo" Type="varchar" MaxLength="20" />
+          <Property Name="DeptId" Type="int" />
+          <Property Name="ApplyTime" Type="datetime" />
+          <Property Name="FinancingBankId" Type="int" />
+          <Property Name="FinancingAccountId" Type="int" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="SwitchBack" Type="bit" />
+          <Property Name="ExchangeId" Type="int" />
+          <Property Name="SumNetAmount" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="SumHands" Type="int" />
+          <Property Name="PledgeApplyStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Fin_PledgeApplyCashDetail">
+          <Key>
+            <PropertyRef Name="CashDetailId" />
+          </Key>
+          <Property Name="CashDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PledgeApplyId" Type="int" />
+          <Property Name="StockContractNo" Type="varchar" MaxLength="30" />
+          <Property Name="Deadline" Type="varchar" MaxLength="20" />
+          <Property Name="Hands" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="ExpiringDate" Type="datetime" />
+          <Property Name="AccountName" Type="varchar" MaxLength="50" />
+          <Property Name="Memo" Type="varchar" MaxLength="4000" />
+          <Property Name="DetailStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Fin_PledgeApplyStockDetail">
+          <Key>
+            <PropertyRef Name="StockDetailId" />
+          </Key>
+          <Property Name="StockDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PledgeApplyId" Type="int" />
+          <Property Name="ContractNo" Type="varchar" MaxLength="30" />
+          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="StockId" Type="int" />
+          <Property Name="RefNo" Type="varchar" MaxLength="400" />
+          <Property Name="Deadline" Type="varchar" MaxLength="20" />
+          <Property Name="Hands" Type="int" />
+          <Property Name="Memo" Type="varchar" MaxLength="4000" />
+          <Property Name="DetailStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Fin_RepoApply">
+          <Key>
+            <PropertyRef Name="RepoApplyId" />
+          </Key>
+          <Property Name="RepoApplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RepoApplyIdNo" Type="varchar" MaxLength="20" />
+          <Property Name="PledgeApplyId" Type="int" />
+          <Property Name="SumNetAmount" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="SumHands" Type="int" />
+          <Property Name="RepoApplyStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Fin_RepoApplyDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RepoApplyId" Type="int" />
+          <Property Name="StockDetailId" Type="int" />
+          <Property Name="PledgeApplyId" Type="int" />
+          <Property Name="RepoTime" Type="datetime" />
+          <Property Name="ContractNo" Type="varchar" MaxLength="30" />
+          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="StockId" Type="int" />
+          <Property Name="RefNo" Type="varchar" MaxLength="400" />
+          <Property Name="Hands" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="ExpiringDate" Type="datetime" />
+          <Property Name="AccountName" Type="varchar" MaxLength="50" />
+          <Property Name="Memo" Type="varchar" MaxLength="4000" />
+          <Property Name="DetailStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Fin_StockNo">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefNo" Type="varchar" MaxLength="400" />
+          <Property Name="NetAmount" Type="numeric" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="FinancingModelStoreContainer">
+          <EntitySet Name="Fin_PledgeApply" EntityType="Self.Fin_PledgeApply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fin_PledgeApplyCashDetail" EntityType="Self.Fin_PledgeApplyCashDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fin_PledgeApplyStockDetail" EntityType="Self.Fin_PledgeApplyStockDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fin_RepoApply" EntityType="Self.Fin_RepoApply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fin_RepoApplyDetail" EntityType="Self.Fin_RepoApplyDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fin_StockNo" EntityType="Self.Fin_StockNo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinancingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Fin_PledgeApply">
+          <Key>
+            <PropertyRef Name="PledgeApplyId" />
+          </Key>
+          <Property Name="PledgeApplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PledgeApplyNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="ApplyTime" Type="DateTime" Precision="3" />
+          <Property Name="FinancingBankId" Type="Int32" />
+          <Property Name="FinancingAccountId" Type="Int32" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="SwitchBack" Type="Boolean" />
+          <Property Name="ExchangeId" Type="Int32" />
+          <Property Name="SumNetAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SumHands" Type="Int32" />
+          <Property Name="PledgeApplyStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Fin_PledgeApplyCashDetail">
+          <Key>
+            <PropertyRef Name="CashDetailId" />
+          </Key>
+          <Property Name="CashDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PledgeApplyId" Type="Int32" />
+          <Property Name="StockContractNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Deadline" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hands" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ExpiringDate" Type="DateTime" Precision="3" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Memo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DetailStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Fin_PledgeApplyStockDetail">
+          <Key>
+            <PropertyRef Name="StockDetailId" />
+          </Key>
+          <Property Name="StockDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PledgeApplyId" Type="Int32" />
+          <Property Name="ContractNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="StockId" Type="Int32" />
+          <Property Name="RefNo" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Deadline" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hands" Type="Int32" />
+          <Property Name="Memo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DetailStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Fin_RepoApply">
+          <Key>
+            <PropertyRef Name="RepoApplyId" />
+          </Key>
+          <Property Name="RepoApplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepoApplyIdNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PledgeApplyId" Type="Int32" />
+          <Property Name="SumNetAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SumHands" Type="Int32" />
+          <Property Name="RepoApplyStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Fin_RepoApplyDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepoApplyId" Type="Int32" />
+          <Property Name="StockDetailId" Type="Int32" />
+          <Property Name="PledgeApplyId" Type="Int32" />
+          <Property Name="RepoTime" Type="DateTime" Precision="3" />
+          <Property Name="ContractNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="StockId" Type="Int32" />
+          <Property Name="RefNo" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Hands" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ExpiringDate" Type="DateTime" Precision="3" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Memo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DetailStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Fin_StockNo">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefNo" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="Financing_ConnectStr" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fin_PledgeApply" EntityType="Self.Fin_PledgeApply" />
+          <EntitySet Name="Fin_PledgeApplyCashDetail" EntityType="Self.Fin_PledgeApplyCashDetail" />
+          <EntitySet Name="Fin_PledgeApplyStockDetail" EntityType="Self.Fin_PledgeApplyStockDetail" />
+          <EntitySet Name="Fin_RepoApply" EntityType="Self.Fin_RepoApply" />
+          <EntitySet Name="Fin_RepoApplyDetail" EntityType="Self.Fin_RepoApplyDetail" />
+          <EntitySet Name="Fin_StockNo" EntityType="Self.Fin_StockNo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinancingModelStoreContainer" CdmEntityContainer="Financing_ConnectStr">
+          <EntitySetMapping Name="Fin_PledgeApply">
+            <EntityTypeMapping TypeName="FinancingModel.Fin_PledgeApply">
+              <MappingFragment StoreEntitySet="Fin_PledgeApply">
+                <ScalarProperty Name="PledgeApplyId" ColumnName="PledgeApplyId" />
+                <ScalarProperty Name="PledgeApplyNo" ColumnName="PledgeApplyNo" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="ApplyTime" ColumnName="ApplyTime" />
+                <ScalarProperty Name="FinancingBankId" ColumnName="FinancingBankId" />
+                <ScalarProperty Name="FinancingAccountId" ColumnName="FinancingAccountId" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="SwitchBack" ColumnName="SwitchBack" />
+                <ScalarProperty Name="ExchangeId" ColumnName="ExchangeId" />
+                <ScalarProperty Name="SumNetAmount" ColumnName="SumNetAmount" />
+                <ScalarProperty Name="SumHands" ColumnName="SumHands" />
+                <ScalarProperty Name="PledgeApplyStatus" ColumnName="PledgeApplyStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fin_PledgeApplyCashDetail">
+            <EntityTypeMapping TypeName="FinancingModel.Fin_PledgeApplyCashDetail">
+              <MappingFragment StoreEntitySet="Fin_PledgeApplyCashDetail">
+                <ScalarProperty Name="CashDetailId" ColumnName="CashDetailId" />
+                <ScalarProperty Name="PledgeApplyId" ColumnName="PledgeApplyId" />
+                <ScalarProperty Name="StockContractNo" ColumnName="StockContractNo" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="Hands" ColumnName="Hands" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ExpiringDate" ColumnName="ExpiringDate" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fin_PledgeApplyStockDetail">
+            <EntityTypeMapping TypeName="FinancingModel.Fin_PledgeApplyStockDetail">
+              <MappingFragment StoreEntitySet="Fin_PledgeApplyStockDetail">
+                <ScalarProperty Name="StockDetailId" ColumnName="StockDetailId" />
+                <ScalarProperty Name="PledgeApplyId" ColumnName="PledgeApplyId" />
+                <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="Hands" ColumnName="Hands" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fin_RepoApply">
+            <EntityTypeMapping TypeName="FinancingModel.Fin_RepoApply">
+              <MappingFragment StoreEntitySet="Fin_RepoApply">
+                <ScalarProperty Name="RepoApplyId" ColumnName="RepoApplyId" />
+                <ScalarProperty Name="RepoApplyIdNo" ColumnName="RepoApplyIdNo" />
+                <ScalarProperty Name="PledgeApplyId" ColumnName="PledgeApplyId" />
+                <ScalarProperty Name="SumNetAmount" ColumnName="SumNetAmount" />
+                <ScalarProperty Name="SumHands" ColumnName="SumHands" />
+                <ScalarProperty Name="RepoApplyStatus" ColumnName="RepoApplyStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fin_RepoApplyDetail">
+            <EntityTypeMapping TypeName="FinancingModel.Fin_RepoApplyDetail">
+              <MappingFragment StoreEntitySet="Fin_RepoApplyDetail">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="RepoApplyId" ColumnName="RepoApplyId" />
+                <ScalarProperty Name="StockDetailId" ColumnName="StockDetailId" />
+                <ScalarProperty Name="PledgeApplyId" ColumnName="PledgeApplyId" />
+                <ScalarProperty Name="RepoTime" ColumnName="RepoTime" />
+                <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Hands" ColumnName="Hands" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ExpiringDate" ColumnName="ExpiringDate" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fin_StockNo">
+            <EntityTypeMapping TypeName="FinancingModel.Fin_StockNo">
+              <MappingFragment StoreEntitySet="Fin_StockNo">
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

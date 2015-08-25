@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +48,403 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Area.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Asset.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthGroup.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthGroupDetail.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthOperate.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthOption.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthOptionDetail.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthOptionDetailEmp_Ref.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankAccount.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Basic.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Basic.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Basic.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Basic.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Basic.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BDStatus.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDStatusDetail.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDStyle.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDStyleDetail.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bloc.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brand.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandAsset.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClauseContract_Ref.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractClause.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractClauseDetail.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractMaster.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CorpDept.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CorpDetailAttach.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Corporation.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CorporationDetail.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliverPlace.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeptEmp.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpAuthGroup.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeContact.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpMenu.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpRole.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exchange.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Finance.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Finance.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Finance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Finance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Finance.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Fin_PledgeApply.cs">
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fin_PledgeApplyCashDetail.cs">
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fin_PledgeApplyStockDetail.cs">
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fin_RepoApply.cs">
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fin_RepoApplyDetail.cs">
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fin_StockNo.cs">
+      <DependentUpon>Finance.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FuturesCode.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FuturesPrice.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasureUnit.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriceAuthority.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Producer.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rate.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleDept.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleDeptMenu.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleMenu.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleMenuOperate.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sms.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sms.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sms.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sms.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sms.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Sm_Sms.cs">
+      <DependentUpon>Sms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sm_SmsConfig.cs">
+      <DependentUpon>Sms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sm_SmsDetail.cs">
+      <DependentUpon>Sms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sm_SmsParameter.cs">
+      <DependentUpon>Sms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sm_SmsType.cs">
+      <DependentUpon>Sms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Basic.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_AuditEmp.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_DataSource.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_FlowMaster.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_FlowMasterConfig.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_Node.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_NodeCondition.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_NodeOperate.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_Task.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_TaskAttach.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_TaskAttachOperateLog.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_TaskNode.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_TaskOperate.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Wf_TaskOperateLog.cs">
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkFlow.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkFlow.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkFlow.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkFlow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkFlow.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkFlow.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Basic.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Basic.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Basic.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Basic.edmx</DependentUpon>
+      <LastGenOutput>Basic.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Basic.edmx.diagram">
+      <DependentUpon>Basic.edmx</DependentUpon>
+    </None>
+    <None Include="Basic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Basic.edmx</DependentUpon>
+      <LastGenOutput>Basic.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Finance.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Finance.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Finance.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Finance.edmx</DependentUpon>
+      <LastGenOutput>Finance.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Finance.edmx.diagram">
+      <DependentUpon>Finance.edmx</DependentUpon>
+    </None>
+    <None Include="Finance.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Finance.edmx</DependentUpon>
+      <LastGenOutput>Finance.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="User.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>User.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Sms.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Sms.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Sms.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sms.edmx</DependentUpon>
+      <LastGenOutput>Sms.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Sms.edmx.diagram">
+      <DependentUpon>Sms.edmx</DependentUpon>
+    </None>
+    <None Include="Sms.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sms.edmx</DependentUpon>
+      <LastGenOutput>Sms.cs</LastGenOutput>
+    </None>
+    <None Include="User.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>User.edmx</DependentUpon>
+      <LastGenOutput>User.Context.cs</LastGenOutput>
+    </None>
+    <None Include="User.edmx.diagram">
+      <DependentUpon>User.edmx</DependentUpon>
+    </None>
+    <None Include="User.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>User.edmx</DependentUpon>
+      <LastGenOutput>User.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="WorkFlow.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WorkFlow.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WorkFlow.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WorkFlow.edmx</DependentUpon>
+      <LastGenOutput>WorkFlow.Context.cs</LastGenOutput>
+    </None>
+    <None Include="WorkFlow.edmx.diagram">
+      <DependentUpon>WorkFlow.edmx</DependentUpon>
+    </None>
+    <None Include="WorkFlow.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WorkFlow.edmx</DependentUpon>
+      <LastGenOutput>WorkFlow.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Basic\" />
+    <Folder Include="User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

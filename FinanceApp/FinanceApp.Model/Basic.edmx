@@ -1,0 +1,1348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NFMT_BasicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AreaFullName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AreaShort" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="AreaCode" Type="varchar" MaxLength="20" />
+          <Property Name="AreaZip" Type="varchar" MaxLength="20" />
+          <Property Name="AreaLevel" Type="int" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="AreaStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="AssetId" />
+          </Key>
+          <Property Name="AssetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MUId" Type="int" Nullable="false" />
+          <Property Name="MisTake" Type="numeric" Precision="18" Scale="8" />
+          <Property Name="AmountPerHand" Type="int" />
+          <Property Name="AssetStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BankEname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BankFullName" Type="varchar" MaxLength="100" />
+          <Property Name="BankShort" Type="varchar" MaxLength="20" />
+          <Property Name="CapitalType" Type="int" />
+          <Property Name="BankLevel" Type="int" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="SwitchBack" Type="bit" />
+          <Property Name="BankStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BankAccount">
+          <Key>
+            <PropertyRef Name="BankAccId" />
+          </Key>
+          <Property Name="BankAccId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="BankAccDesc" Type="varchar" MaxLength="400" />
+          <Property Name="BankAccStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BDStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="20" />
+          <Property Name="StatusNameCode" Type="varchar" MaxLength="20" />
+          <Property Name="KeyName" Type="varchar" MaxLength="20" />
+          <Property Name="TableName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BDStatusDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="StatusCode" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BDStyle">
+          <Key>
+            <PropertyRef Name="BDStyleId" />
+          </Key>
+          <Property Name="BDStyleId" Type="int" Nullable="false" />
+          <Property Name="BDStyleCode" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="BDStyleName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="BDStyleStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BDStyleDetail">
+          <Key>
+            <PropertyRef Name="StyleDetailId" />
+          </Key>
+          <Property Name="StyleDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BDStyleId" Type="int" Nullable="false" />
+          <Property Name="DetailCode" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DetailName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DetailStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProducerId" Type="int" />
+          <Property Name="BrandName" Type="varchar" MaxLength="80" />
+          <Property Name="BrandFullName" Type="varchar" MaxLength="400" />
+          <Property Name="BrandInfo" Type="varchar" MaxLength="800" />
+          <Property Name="BrandStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BrandAsset">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ClauseContract_Ref">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" />
+          <Property Name="ClauseId" Type="int" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsChose" Type="bit" />
+          <Property Name="RefStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContractClause">
+          <Key>
+            <PropertyRef Name="ClauseId" />
+          </Key>
+          <Property Name="ClauseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClauseText" Type="varchar(max)" />
+          <Property Name="ClauseEnText" Type="varchar(max)" />
+          <Property Name="ClauseStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContractClauseDetail">
+          <Key>
+            <PropertyRef Name="ClauseDetailId" />
+          </Key>
+          <Property Name="ClauseDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClauseId" Type="int" />
+          <Property Name="DetailDisplayType" Type="int" />
+          <Property Name="DetailDataType" Type="int" />
+          <Property Name="FormatSerial" Type="int" />
+          <Property Name="DetailValue" Type="varchar" MaxLength="200" />
+          <Property Name="DetailStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContractMaster">
+          <Key>
+            <PropertyRef Name="MasterId" />
+          </Key>
+          <Property Name="MasterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterName" Type="varchar" MaxLength="200" />
+          <Property Name="MasterEname" Type="varchar" MaxLength="200" />
+          <Property Name="MasterStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CorpDept">
+          <Key>
+            <PropertyRef Name="CorpEmpId" />
+          </Key>
+          <Property Name="CorpEmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptId" Type="int" />
+          <Property Name="CorpId" Type="int" />
+          <Property Name="RefStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CurrencyStatus" Type="int" Nullable="false" />
+          <Property Name="CurrencyFullName" Type="varchar" MaxLength="20" />
+          <Property Name="CurencyShort" Type="varchar" MaxLength="20" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DeliverPlace">
+          <Key>
+            <PropertyRef Name="DPId" />
+          </Key>
+          <Property Name="DPId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DPType" Type="int" Nullable="false" />
+          <Property Name="DPArea" Type="int" Nullable="false" />
+          <Property Name="DPCompany" Type="int" />
+          <Property Name="DPName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DPFullName" Type="varchar" MaxLength="400" />
+          <Property Name="DPStatus" Type="int" Nullable="false" />
+          <Property Name="DPAddress" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="DPEAddress" Type="varchar" MaxLength="400" />
+          <Property Name="DPTel" Type="varchar" MaxLength="80" />
+          <Property Name="DPContact" Type="varchar" MaxLength="80" />
+          <Property Name="DPFax" Type="varchar" MaxLength="80" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Exchange">
+          <Key>
+            <PropertyRef Name="ExchangeId" />
+          </Key>
+          <Property Name="ExchangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExchangeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExchangeCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ExchangeStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FuturesCode">
+          <Key>
+            <PropertyRef Name="FuturesCodeId" />
+          </Key>
+          <Property Name="FuturesCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExchageId" Type="int" />
+          <Property Name="CodeSize" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="FirstTradeDate" Type="datetime" />
+          <Property Name="LastTradeDate" Type="datetime" />
+          <Property Name="MUId" Type="int" />
+          <Property Name="CurrencyId" Type="int" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="FuturesCodeStatus" Type="int" />
+          <Property Name="TradeCode" Type="varchar" MaxLength="80" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FuturesPrice">
+          <Key>
+            <PropertyRef Name="FPId" />
+          </Key>
+          <Property Name="FPId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TradeDate" Type="datetime" Nullable="false" />
+          <Property Name="TradeCode" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DeliverDate" Type="datetime" Nullable="false" />
+          <Property Name="SettlePrice" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MeasureUnit">
+          <Key>
+            <PropertyRef Name="MUId" />
+          </Key>
+          <Property Name="MUId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BaseId" Type="int" />
+          <Property Name="TransformRate" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="MUStatus" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParaId" />
+          </Key>
+          <Property Name="ParaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParaName" Type="varchar" MaxLength="200" />
+          <Property Name="ParaValue" Type="varchar" MaxLength="200" />
+          <Property Name="ParaStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="PriceAuthority">
+          <Key>
+            <PropertyRef Name="PAId" />
+          </Key>
+          <Property Name="PAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="PAMobile" Type="varchar" MaxLength="80" />
+          <Property Name="PAPhone" Type="varchar" MaxLength="80" />
+          <Property Name="PAStatus" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="ProducerId" />
+          </Key>
+          <Property Name="ProducerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProducerName" Type="varchar" MaxLength="80" />
+          <Property Name="ProducerFullName" Type="varchar" MaxLength="400" />
+          <Property Name="ProducerShort" Type="varchar" MaxLength="80" />
+          <Property Name="ProducerArea" Type="int" />
+          <Property Name="ProducerStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="RateId" />
+          </Key>
+          <Property Name="RateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromCurrencyId" Type="int" />
+          <Property Name="ToCurrencyId" Type="int" />
+          <Property Name="RateValue" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="RateStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_ClauseContract_Ref_ContractClause">
+          <End Role="ContractClause" Type="Self.ContractClause" Multiplicity="0..1" />
+          <End Role="ClauseContract_Ref" Type="Self.ClauseContract_Ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractClause">
+              <PropertyRef Name="ClauseId" />
+            </Principal>
+            <Dependent Role="ClauseContract_Ref">
+              <PropertyRef Name="ClauseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClauseContract_Ref_ContractMaster">
+          <End Role="ContractMaster" Type="Self.ContractMaster" Multiplicity="0..1" />
+          <End Role="ClauseContract_Ref" Type="Self.ClauseContract_Ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractMaster">
+              <PropertyRef Name="MasterId" />
+            </Principal>
+            <Dependent Role="ClauseContract_Ref">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractClauseDetail_ContractClause">
+          <End Role="ContractClause" Type="Self.ContractClause" Multiplicity="0..1" />
+          <End Role="ContractClauseDetail" Type="Self.ContractClauseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractClause">
+              <PropertyRef Name="ClauseId" />
+            </Principal>
+            <Dependent Role="ContractClauseDetail">
+              <PropertyRef Name="ClauseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NFMT_BasicModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset" EntityType="Self.Asset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankAccount" EntityType="Self.BankAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BDStatus" EntityType="Self.BDStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BDStatusDetail" EntityType="Self.BDStatusDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BDStyle" EntityType="Self.BDStyle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BDStyleDetail" EntityType="Self.BDStyleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandAsset" EntityType="Self.BrandAsset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClauseContract_Ref" EntityType="Self.ClauseContract_Ref" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractClause" EntityType="Self.ContractClause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractClauseDetail" EntityType="Self.ContractClauseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractMaster" EntityType="Self.ContractMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorpDept" EntityType="Self.CorpDept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliverPlace" EntityType="Self.DeliverPlace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exchange" EntityType="Self.Exchange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuturesCode" EntityType="Self.FuturesCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuturesPrice" EntityType="Self.FuturesPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeasureUnit" EntityType="Self.MeasureUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameter" EntityType="Self.Parameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceAuthority" EntityType="Self.PriceAuthority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClauseContract_Ref_ContractClause" Association="Self.FK_ClauseContract_Ref_ContractClause">
+            <End Role="ContractClause" EntitySet="ContractClause" />
+            <End Role="ClauseContract_Ref" EntitySet="ClauseContract_Ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClauseContract_Ref_ContractMaster" Association="Self.FK_ClauseContract_Ref_ContractMaster">
+            <End Role="ContractMaster" EntitySet="ContractMaster" />
+            <End Role="ClauseContract_Ref" EntitySet="ClauseContract_Ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractClauseDetail_ContractClause" Association="Self.FK_ContractClauseDetail_ContractClause">
+            <End Role="ContractClause" EntitySet="ContractClause" />
+            <End Role="ContractClauseDetail" EntitySet="ContractClauseDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NFMT_BasicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AreaFullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AreaShort" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AreaCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AreaZip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AreaLevel" Type="Int32" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="AreaStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="AssetId" />
+          </Key>
+          <Property Name="AssetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MUId" Type="Int32" Nullable="false" />
+          <Property Name="MisTake" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="AmountPerHand" Type="Int32" />
+          <Property Name="AssetStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BankEname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BankFullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BankShort" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CapitalType" Type="Int32" />
+          <Property Name="BankLevel" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="SwitchBack" Type="Boolean" />
+          <Property Name="BankStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BankAccount">
+          <Key>
+            <PropertyRef Name="BankAccId" />
+          </Key>
+          <Property Name="BankAccId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="BankAccDesc" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BDStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StatusNameCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="KeyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BDStatusDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatusCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BDStyle">
+          <Key>
+            <PropertyRef Name="BDStyleId" />
+          </Key>
+          <Property Name="BDStyleId" Type="Int32" Nullable="false" />
+          <Property Name="BDStyleCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BDStyleName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BDStyleStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BDStyleDetail">
+          <Key>
+            <PropertyRef Name="StyleDetailId" />
+          </Key>
+          <Property Name="StyleDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BDStyleId" Type="Int32" Nullable="false" />
+          <Property Name="DetailCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DetailName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DetailStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProducerId" Type="Int32" />
+          <Property Name="BrandName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="BrandFullName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="BrandInfo" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="BrandStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BrandAsset">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ClauseContract_Ref">
+          <Key>
+            <PropertyRef Name="RefId" />
+          </Key>
+          <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="ClauseId" Type="Int32" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsChose" Type="Boolean" />
+          <Property Name="RefStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ContractClause" Relationship="Self.FK_ClauseContract_Ref_ContractClause" FromRole="ClauseContract_Ref" ToRole="ContractClause" />
+          <NavigationProperty Name="ContractMaster" Relationship="Self.FK_ClauseContract_Ref_ContractMaster" FromRole="ClauseContract_Ref" ToRole="ContractMaster" />
+        </EntityType>
+        <EntityType Name="ContractClause">
+          <Key>
+            <PropertyRef Name="ClauseId" />
+          </Key>
+          <Property Name="ClauseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClauseText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClauseEnText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClauseStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ClauseContract_Ref" Relationship="Self.FK_ClauseContract_Ref_ContractClause" FromRole="ContractClause" ToRole="ClauseContract_Ref" />
+          <NavigationProperty Name="ContractClauseDetail" Relationship="Self.FK_ContractClauseDetail_ContractClause" FromRole="ContractClause" ToRole="ContractClauseDetail" />
+        </EntityType>
+        <EntityType Name="ContractClauseDetail">
+          <Key>
+            <PropertyRef Name="ClauseDetailId" />
+          </Key>
+          <Property Name="ClauseDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClauseId" Type="Int32" />
+          <Property Name="DetailDisplayType" Type="Int32" />
+          <Property Name="DetailDataType" Type="Int32" />
+          <Property Name="FormatSerial" Type="Int32" />
+          <Property Name="DetailValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DetailStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ContractClause" Relationship="Self.FK_ContractClauseDetail_ContractClause" FromRole="ContractClauseDetail" ToRole="ContractClause" />
+        </EntityType>
+        <EntityType Name="ContractMaster">
+          <Key>
+            <PropertyRef Name="MasterId" />
+          </Key>
+          <Property Name="MasterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MasterEname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MasterStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ClauseContract_Ref" Relationship="Self.FK_ClauseContract_Ref_ContractMaster" FromRole="ContractMaster" ToRole="ClauseContract_Ref" />
+        </EntityType>
+        <EntityType Name="CorpDept">
+          <Key>
+            <PropertyRef Name="CorpEmpId" />
+          </Key>
+          <Property Name="CorpEmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="CorpId" Type="Int32" />
+          <Property Name="RefStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CurrencyStatus" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyFullName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CurencyShort" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DeliverPlace">
+          <Key>
+            <PropertyRef Name="DPId" />
+          </Key>
+          <Property Name="DPId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DPType" Type="Int32" Nullable="false" />
+          <Property Name="DPArea" Type="Int32" Nullable="false" />
+          <Property Name="DPCompany" Type="Int32" />
+          <Property Name="DPName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DPFullName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="DPStatus" Type="Int32" Nullable="false" />
+          <Property Name="DPAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DPEAddress" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="DPTel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DPContact" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DPFax" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Exchange">
+          <Key>
+            <PropertyRef Name="ExchangeId" />
+          </Key>
+          <Property Name="ExchangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExchangeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExchangeCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExchangeStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FuturesCode">
+          <Key>
+            <PropertyRef Name="FuturesCodeId" />
+          </Key>
+          <Property Name="FuturesCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExchageId" Type="Int32" />
+          <Property Name="CodeSize" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FirstTradeDate" Type="DateTime" Precision="3" />
+          <Property Name="LastTradeDate" Type="DateTime" Precision="3" />
+          <Property Name="MUId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="FuturesCodeStatus" Type="Int32" />
+          <Property Name="TradeCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FuturesPrice">
+          <Key>
+            <PropertyRef Name="FPId" />
+          </Key>
+          <Property Name="FPId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TradeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TradeCode" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeliverDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SettlePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MeasureUnit">
+          <Key>
+            <PropertyRef Name="MUId" />
+          </Key>
+          <Property Name="MUId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BaseId" Type="Int32" />
+          <Property Name="TransformRate" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="MUStatus" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParaId" />
+          </Key>
+          <Property Name="ParaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParaName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParaValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParaStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PriceAuthority">
+          <Key>
+            <PropertyRef Name="PAId" />
+          </Key>
+          <Property Name="PAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAMobile" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="PAPhone" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="PAStatus" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="ProducerId" />
+          </Key>
+          <Property Name="ProducerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProducerName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ProducerFullName" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="ProducerShort" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ProducerArea" Type="Int32" />
+          <Property Name="ProducerStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="RateId" />
+          </Key>
+          <Property Name="RateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromCurrencyId" Type="Int32" />
+          <Property Name="ToCurrencyId" Type="Int32" />
+          <Property Name="RateValue" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="RateStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ClauseContract_Ref_ContractClause">
+          <End Role="ContractClause" Type="Self.ContractClause" Multiplicity="0..1" />
+          <End Role="ClauseContract_Ref" Type="Self.ClauseContract_Ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractClause">
+              <PropertyRef Name="ClauseId" />
+            </Principal>
+            <Dependent Role="ClauseContract_Ref">
+              <PropertyRef Name="ClauseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClauseContract_Ref_ContractMaster">
+          <End Role="ContractMaster" Type="Self.ContractMaster" Multiplicity="0..1" />
+          <End Role="ClauseContract_Ref" Type="Self.ClauseContract_Ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractMaster">
+              <PropertyRef Name="MasterId" />
+            </Principal>
+            <Dependent Role="ClauseContract_Ref">
+              <PropertyRef Name="MasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractClauseDetail_ContractClause">
+          <End Role="ContractClause" Type="Self.ContractClause" Multiplicity="0..1" />
+          <End Role="ContractClauseDetail" Type="Self.ContractClauseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractClause">
+              <PropertyRef Name="ClauseId" />
+            </Principal>
+            <Dependent Role="ContractClauseDetail">
+              <PropertyRef Name="ClauseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NFMT_Basic_ConnectStr" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Asset" EntityType="Self.Asset" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" />
+          <EntitySet Name="BankAccount" EntityType="Self.BankAccount" />
+          <EntitySet Name="BDStatus" EntityType="Self.BDStatus" />
+          <EntitySet Name="BDStatusDetail" EntityType="Self.BDStatusDetail" />
+          <EntitySet Name="BDStyle" EntityType="Self.BDStyle" />
+          <EntitySet Name="BDStyleDetail" EntityType="Self.BDStyleDetail" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" />
+          <EntitySet Name="BrandAsset" EntityType="Self.BrandAsset" />
+          <EntitySet Name="ClauseContract_Ref" EntityType="Self.ClauseContract_Ref" />
+          <EntitySet Name="ContractClause" EntityType="Self.ContractClause" />
+          <EntitySet Name="ContractClauseDetail" EntityType="Self.ContractClauseDetail" />
+          <EntitySet Name="ContractMaster" EntityType="Self.ContractMaster" />
+          <EntitySet Name="CorpDept" EntityType="Self.CorpDept" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" />
+          <EntitySet Name="DeliverPlace" EntityType="Self.DeliverPlace" />
+          <EntitySet Name="Exchange" EntityType="Self.Exchange" />
+          <EntitySet Name="FuturesCode" EntityType="Self.FuturesCode" />
+          <EntitySet Name="FuturesPrice" EntityType="Self.FuturesPrice" />
+          <EntitySet Name="MeasureUnit" EntityType="Self.MeasureUnit" />
+          <EntitySet Name="Parameter" EntityType="Self.Parameter" />
+          <EntitySet Name="PriceAuthority" EntityType="Self.PriceAuthority" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_ClauseContract_Ref_ContractClause" Association="Self.FK_ClauseContract_Ref_ContractClause">
+            <End Role="ContractClause" EntitySet="ContractClause" />
+            <End Role="ClauseContract_Ref" EntitySet="ClauseContract_Ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClauseContract_Ref_ContractMaster" Association="Self.FK_ClauseContract_Ref_ContractMaster">
+            <End Role="ContractMaster" EntitySet="ContractMaster" />
+            <End Role="ClauseContract_Ref" EntitySet="ClauseContract_Ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractClauseDetail_ContractClause" Association="Self.FK_ContractClauseDetail_ContractClause">
+            <End Role="ContractClause" EntitySet="ContractClause" />
+            <End Role="ContractClauseDetail" EntitySet="ContractClauseDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NFMT_BasicModelStoreContainer" CdmEntityContainer="NFMT_Basic_ConnectStr">
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AreaFullName" ColumnName="AreaFullName" />
+                <ScalarProperty Name="AreaShort" ColumnName="AreaShort" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="AreaZip" ColumnName="AreaZip" />
+                <ScalarProperty Name="AreaLevel" ColumnName="AreaLevel" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="AreaStatus" ColumnName="AreaStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Asset">
+              <MappingFragment StoreEntitySet="Asset">
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+                <ScalarProperty Name="MUId" ColumnName="MUId" />
+                <ScalarProperty Name="MisTake" ColumnName="MisTake" />
+                <ScalarProperty Name="AmountPerHand" ColumnName="AmountPerHand" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bank">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankEname" ColumnName="BankEname" />
+                <ScalarProperty Name="BankFullName" ColumnName="BankFullName" />
+                <ScalarProperty Name="BankShort" ColumnName="BankShort" />
+                <ScalarProperty Name="CapitalType" ColumnName="CapitalType" />
+                <ScalarProperty Name="BankLevel" ColumnName="BankLevel" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="SwitchBack" ColumnName="SwitchBack" />
+                <ScalarProperty Name="BankStatus" ColumnName="BankStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankAccount">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.BankAccount">
+              <MappingFragment StoreEntitySet="BankAccount">
+                <ScalarProperty Name="BankAccId" ColumnName="BankAccId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="BankAccDesc" ColumnName="BankAccDesc" />
+                <ScalarProperty Name="BankAccStatus" ColumnName="BankAccStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BDStatus">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.BDStatus">
+              <MappingFragment StoreEntitySet="BDStatus">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusNameCode" ColumnName="StatusNameCode" />
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BDStatusDetail">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.BDStatusDetail">
+              <MappingFragment StoreEntitySet="BDStatusDetail">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BDStyle">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.BDStyle">
+              <MappingFragment StoreEntitySet="BDStyle">
+                <ScalarProperty Name="BDStyleId" ColumnName="BDStyleId" />
+                <ScalarProperty Name="BDStyleCode" ColumnName="BDStyleCode" />
+                <ScalarProperty Name="BDStyleName" ColumnName="BDStyleName" />
+                <ScalarProperty Name="BDStyleStatus" ColumnName="BDStyleStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BDStyleDetail">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.BDStyleDetail">
+              <MappingFragment StoreEntitySet="BDStyleDetail">
+                <ScalarProperty Name="StyleDetailId" ColumnName="StyleDetailId" />
+                <ScalarProperty Name="BDStyleId" ColumnName="BDStyleId" />
+                <ScalarProperty Name="DetailCode" ColumnName="DetailCode" />
+                <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="ProducerId" ColumnName="ProducerId" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandFullName" ColumnName="BrandFullName" />
+                <ScalarProperty Name="BrandInfo" ColumnName="BrandInfo" />
+                <ScalarProperty Name="BrandStatus" ColumnName="BrandStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandAsset">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.BrandAsset">
+              <MappingFragment StoreEntitySet="BrandAsset">
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClauseContract_Ref">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.ClauseContract_Ref">
+              <MappingFragment StoreEntitySet="ClauseContract_Ref">
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="ClauseId" ColumnName="ClauseId" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsChose" ColumnName="IsChose" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractClause">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.ContractClause">
+              <MappingFragment StoreEntitySet="ContractClause">
+                <ScalarProperty Name="ClauseId" ColumnName="ClauseId" />
+                <ScalarProperty Name="ClauseText" ColumnName="ClauseText" />
+                <ScalarProperty Name="ClauseEnText" ColumnName="ClauseEnText" />
+                <ScalarProperty Name="ClauseStatus" ColumnName="ClauseStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractClauseDetail">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.ContractClauseDetail">
+              <MappingFragment StoreEntitySet="ContractClauseDetail">
+                <ScalarProperty Name="ClauseDetailId" ColumnName="ClauseDetailId" />
+                <ScalarProperty Name="ClauseId" ColumnName="ClauseId" />
+                <ScalarProperty Name="DetailDisplayType" ColumnName="DetailDisplayType" />
+                <ScalarProperty Name="DetailDataType" ColumnName="DetailDataType" />
+                <ScalarProperty Name="FormatSerial" ColumnName="FormatSerial" />
+                <ScalarProperty Name="DetailValue" ColumnName="DetailValue" />
+                <ScalarProperty Name="DetailStatus" ColumnName="DetailStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractMaster">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.ContractMaster">
+              <MappingFragment StoreEntitySet="ContractMaster">
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="MasterName" ColumnName="MasterName" />
+                <ScalarProperty Name="MasterEname" ColumnName="MasterEname" />
+                <ScalarProperty Name="MasterStatus" ColumnName="MasterStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorpDept">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.CorpDept">
+              <MappingFragment StoreEntitySet="CorpDept">
+                <ScalarProperty Name="CorpEmpId" ColumnName="CorpEmpId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+                <ScalarProperty Name="RefStatus" ColumnName="RefStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyStatus" ColumnName="CurrencyStatus" />
+                <ScalarProperty Name="CurrencyFullName" ColumnName="CurrencyFullName" />
+                <ScalarProperty Name="CurencyShort" ColumnName="CurencyShort" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliverPlace">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.DeliverPlace">
+              <MappingFragment StoreEntitySet="DeliverPlace">
+                <ScalarProperty Name="DPId" ColumnName="DPId" />
+                <ScalarProperty Name="DPType" ColumnName="DPType" />
+                <ScalarProperty Name="DPArea" ColumnName="DPArea" />
+                <ScalarProperty Name="DPCompany" ColumnName="DPCompany" />
+                <ScalarProperty Name="DPName" ColumnName="DPName" />
+                <ScalarProperty Name="DPFullName" ColumnName="DPFullName" />
+                <ScalarProperty Name="DPStatus" ColumnName="DPStatus" />
+                <ScalarProperty Name="DPAddress" ColumnName="DPAddress" />
+                <ScalarProperty Name="DPEAddress" ColumnName="DPEAddress" />
+                <ScalarProperty Name="DPTel" ColumnName="DPTel" />
+                <ScalarProperty Name="DPContact" ColumnName="DPContact" />
+                <ScalarProperty Name="DPFax" ColumnName="DPFax" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exchange">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Exchange">
+              <MappingFragment StoreEntitySet="Exchange">
+                <ScalarProperty Name="ExchangeId" ColumnName="ExchangeId" />
+                <ScalarProperty Name="ExchangeName" ColumnName="ExchangeName" />
+                <ScalarProperty Name="ExchangeCode" ColumnName="ExchangeCode" />
+                <ScalarProperty Name="ExchangeStatus" ColumnName="ExchangeStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuturesCode">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.FuturesCode">
+              <MappingFragment StoreEntitySet="FuturesCode">
+                <ScalarProperty Name="FuturesCodeId" ColumnName="FuturesCodeId" />
+                <ScalarProperty Name="ExchageId" ColumnName="ExchageId" />
+                <ScalarProperty Name="CodeSize" ColumnName="CodeSize" />
+                <ScalarProperty Name="FirstTradeDate" ColumnName="FirstTradeDate" />
+                <ScalarProperty Name="LastTradeDate" ColumnName="LastTradeDate" />
+                <ScalarProperty Name="MUId" ColumnName="MUId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="FuturesCodeStatus" ColumnName="FuturesCodeStatus" />
+                <ScalarProperty Name="TradeCode" ColumnName="TradeCode" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuturesPrice">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.FuturesPrice">
+              <MappingFragment StoreEntitySet="FuturesPrice">
+                <ScalarProperty Name="FPId" ColumnName="FPId" />
+                <ScalarProperty Name="TradeDate" ColumnName="TradeDate" />
+                <ScalarProperty Name="TradeCode" ColumnName="TradeCode" />
+                <ScalarProperty Name="DeliverDate" ColumnName="DeliverDate" />
+                <ScalarProperty Name="SettlePrice" ColumnName="SettlePrice" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeasureUnit">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.MeasureUnit">
+              <MappingFragment StoreEntitySet="MeasureUnit">
+                <ScalarProperty Name="MUId" ColumnName="MUId" />
+                <ScalarProperty Name="MUName" ColumnName="MUName" />
+                <ScalarProperty Name="BaseId" ColumnName="BaseId" />
+                <ScalarProperty Name="TransformRate" ColumnName="TransformRate" />
+                <ScalarProperty Name="MUStatus" ColumnName="MUStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameter">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Parameter">
+              <MappingFragment StoreEntitySet="Parameter">
+                <ScalarProperty Name="ParaId" ColumnName="ParaId" />
+                <ScalarProperty Name="ParaName" ColumnName="ParaName" />
+                <ScalarProperty Name="ParaValue" ColumnName="ParaValue" />
+                <ScalarProperty Name="ParaStatus" ColumnName="ParaStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceAuthority">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.PriceAuthority">
+              <MappingFragment StoreEntitySet="PriceAuthority">
+                <ScalarProperty Name="PAId" ColumnName="PAId" />
+                <ScalarProperty Name="PAName" ColumnName="PAName" />
+                <ScalarProperty Name="PAMobile" ColumnName="PAMobile" />
+                <ScalarProperty Name="PAPhone" ColumnName="PAPhone" />
+                <ScalarProperty Name="PAStatus" ColumnName="PAStatus" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producer">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Producer">
+              <MappingFragment StoreEntitySet="Producer">
+                <ScalarProperty Name="ProducerId" ColumnName="ProducerId" />
+                <ScalarProperty Name="ProducerName" ColumnName="ProducerName" />
+                <ScalarProperty Name="ProducerFullName" ColumnName="ProducerFullName" />
+                <ScalarProperty Name="ProducerShort" ColumnName="ProducerShort" />
+                <ScalarProperty Name="ProducerArea" ColumnName="ProducerArea" />
+                <ScalarProperty Name="ProducerStatus" ColumnName="ProducerStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="RateId" ColumnName="RateId" />
+                <ScalarProperty Name="FromCurrencyId" ColumnName="FromCurrencyId" />
+                <ScalarProperty Name="ToCurrencyId" ColumnName="ToCurrencyId" />
+                <ScalarProperty Name="RateValue" ColumnName="RateValue" />
+                <ScalarProperty Name="RateStatus" ColumnName="RateStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NFMT_BasicModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

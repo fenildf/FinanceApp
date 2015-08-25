@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NFMT_WorkFlowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Wf_AuditEmp">
+          <Key>
+            <PropertyRef Name="AuditEmpId" />
+          </Key>
+          <Property Name="AuditEmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditEmpType" Type="int" />
+          <Property Name="ValueId" Type="int" />
+          <Property Name="AuditEmpStatus" Type="int" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Wf_DataSource">
+          <Key>
+            <PropertyRef Name="SourceId" />
+          </Key>
+          <Property Name="SourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BaseName" Type="varchar" MaxLength="200" />
+          <Property Name="TableCode" Type="varchar" MaxLength="50" />
+          <Property Name="DataStatus" Type="int" />
+          <Property Name="RowId" Type="int" />
+          <Property Name="DalName" Type="varchar" MaxLength="80" />
+          <Property Name="AssName" Type="varchar" MaxLength="50" />
+          <Property Name="ViewUrl" Type="varchar" MaxLength="400" />
+          <Property Name="RefusalUrl" Type="varchar" MaxLength="800" />
+          <Property Name="SuccessUrl" Type="varchar" MaxLength="800" />
+          <Property Name="ConditionUrl" Type="varchar" MaxLength="800" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="ApplyTime" Type="datetime" />
+          <Property Name="ApplyTitle" Type="varchar" MaxLength="400" />
+          <Property Name="ApplyMemo" Type="varchar" MaxLength="4000" />
+          <Property Name="ApplyInfo" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Wf_FlowMaster">
+          <Key>
+            <PropertyRef Name="MasterId" />
+          </Key>
+          <Property Name="MasterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MasterStatus" Type="int" Nullable="false" />
+          <Property Name="ViewUrl" Type="varchar" MaxLength="200" />
+          <Property Name="ConditionUrl" Type="varchar" MaxLength="200" />
+          <Property Name="SuccessUrl" Type="varchar" MaxLength="200" />
+          <Property Name="RefusalUrl" Type="varchar" MaxLength="200" />
+          <Property Name="ViewTitle" Type="varchar" MaxLength="200" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="LastModifyId" Type="int" />
+          <Property Name="LastModifyTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Wf_FlowMasterConfig">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" />
+          <Property Name="CanPassAudit" Type="bit" />
+          <Property Name="IsSeries" Type="bit" />
+          <Property Name="RefuseUrl" Type="varchar" MaxLength="4000" />
+          <Property Name="ConfigStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_Node">
+          <Key>
+            <PropertyRef Name="NodeId" />
+          </Key>
+          <Property Name="NodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" Nullable="false" />
+          <Property Name="NodeStatus" Type="int" Nullable="false" />
+          <Property Name="NodeName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NodeType" Type="int" />
+          <Property Name="IsFirst" Type="bit" />
+          <Property Name="IsLast" Type="bit" />
+          <Property Name="PreNodeId" Type="int" />
+          <Property Name="AuditEmpId" Type="int" />
+          <Property Name="AuthGroupId" Type="int" />
+          <Property Name="NodeLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_NodeCondition">
+          <Key>
+            <PropertyRef Name="ConditionId" />
+          </Key>
+          <Property Name="ConditionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConditionStatus" Type="int" Nullable="false" />
+          <Property Name="NodeId" Type="int" Nullable="false" />
+          <Property Name="FieldName" Type="varchar" MaxLength="50" />
+          <Property Name="FieldValue" Type="varchar" MaxLength="50" />
+          <Property Name="ConditionType" Type="int" />
+          <Property Name="LogicType" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_NodeOperate">
+          <Key>
+            <PropertyRef Name="OperateId" />
+          </Key>
+          <Property Name="OperateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NodeId" Type="int" />
+          <Property Name="OperateUrl" Type="varchar" MaxLength="200" />
+          <Property Name="OperateStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_Task">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasterId" Type="int" />
+          <Property Name="TaskName" Type="varchar" MaxLength="200" />
+          <Property Name="TaskConnext" Type="varchar(max)" />
+          <Property Name="TaskStatus" Type="int" />
+          <Property Name="DataSourceId" Type="int" />
+          <Property Name="TaskType" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_TaskAttach">
+          <Key>
+            <PropertyRef Name="TaskAttachId" />
+          </Key>
+          <Property Name="TaskAttachId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskId" Type="int" />
+          <Property Name="AttachId" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_TaskAttachOperateLog">
+          <Key>
+            <PropertyRef Name="OperateLogId" />
+          </Key>
+          <Property Name="OperateLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="AttachId" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_TaskNode">
+          <Key>
+            <PropertyRef Name="TaskNodeId" />
+          </Key>
+          <Property Name="TaskNodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NodeId" Type="int" Nullable="false" />
+          <Property Name="TaskId" Type="int" Nullable="false" />
+          <Property Name="NodeLevel" Type="int" />
+          <Property Name="NodeStatus" Type="int" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="AuditTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Wf_TaskOperate">
+          <Key>
+            <PropertyRef Name="TaskOperateId" />
+          </Key>
+          <Property Name="TaskOperateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskNodeId" Type="int" />
+          <Property Name="OperateUrl" Type="varchar" MaxLength="200" />
+          <Property Name="OperateStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Wf_TaskOperateLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskNodeId" Type="int" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="Memo" Type="varchar" MaxLength="4000" />
+          <Property Name="LogTime" Type="datetime" />
+          <Property Name="LogResult" Type="varchar" MaxLength="400" />
+        </EntityType>
+        <EntityContainer Name="NFMT_WorkFlowModelStoreContainer">
+          <EntitySet Name="Wf_AuditEmp" EntityType="Self.Wf_AuditEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_DataSource" EntityType="Self.Wf_DataSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_FlowMaster" EntityType="Self.Wf_FlowMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_FlowMasterConfig" EntityType="Self.Wf_FlowMasterConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_Node" EntityType="Self.Wf_Node" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_NodeCondition" EntityType="Self.Wf_NodeCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_NodeOperate" EntityType="Self.Wf_NodeOperate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_Task" EntityType="Self.Wf_Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_TaskAttach" EntityType="Self.Wf_TaskAttach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_TaskAttachOperateLog" EntityType="Self.Wf_TaskAttachOperateLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_TaskNode" EntityType="Self.Wf_TaskNode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_TaskOperate" EntityType="Self.Wf_TaskOperate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wf_TaskOperateLog" EntityType="Self.Wf_TaskOperateLog" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NFMT_WorkFlowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Wf_AuditEmp">
+          <Key>
+            <PropertyRef Name="AuditEmpId" />
+          </Key>
+          <Property Name="AuditEmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditEmpType" Type="Int32" />
+          <Property Name="ValueId" Type="Int32" />
+          <Property Name="AuditEmpStatus" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Wf_DataSource">
+          <Key>
+            <PropertyRef Name="SourceId" />
+          </Key>
+          <Property Name="SourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BaseName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TableCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataStatus" Type="Int32" />
+          <Property Name="RowId" Type="Int32" />
+          <Property Name="DalName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="AssName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ViewUrl" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="RefusalUrl" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="SuccessUrl" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="ConditionUrl" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="ApplyTime" Type="DateTime" Precision="3" />
+          <Property Name="ApplyTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyMemo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyInfo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Wf_FlowMaster">
+          <Key>
+            <PropertyRef Name="MasterId" />
+          </Key>
+          <Property Name="MasterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MasterStatus" Type="Int32" Nullable="false" />
+          <Property Name="ViewUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConditionUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SuccessUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RefusalUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ViewTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyId" Type="Int32" />
+          <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Wf_FlowMasterConfig">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="CanPassAudit" Type="Boolean" />
+          <Property Name="IsSeries" Type="Boolean" />
+          <Property Name="RefuseUrl" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ConfigStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_Node">
+          <Key>
+            <PropertyRef Name="NodeId" />
+          </Key>
+          <Property Name="NodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" Nullable="false" />
+          <Property Name="NodeStatus" Type="Int32" Nullable="false" />
+          <Property Name="NodeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NodeType" Type="Int32" />
+          <Property Name="IsFirst" Type="Boolean" />
+          <Property Name="IsLast" Type="Boolean" />
+          <Property Name="PreNodeId" Type="Int32" />
+          <Property Name="AuditEmpId" Type="Int32" />
+          <Property Name="AuthGroupId" Type="Int32" />
+          <Property Name="NodeLevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_NodeCondition">
+          <Key>
+            <PropertyRef Name="ConditionId" />
+          </Key>
+          <Property Name="ConditionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConditionStatus" Type="Int32" Nullable="false" />
+          <Property Name="NodeId" Type="Int32" Nullable="false" />
+          <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConditionType" Type="Int32" />
+          <Property Name="LogicType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_NodeOperate">
+          <Key>
+            <PropertyRef Name="OperateId" />
+          </Key>
+          <Property Name="OperateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NodeId" Type="Int32" />
+          <Property Name="OperateUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OperateStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_Task">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasterId" Type="Int32" />
+          <Property Name="TaskName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TaskConnext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TaskStatus" Type="Int32" />
+          <Property Name="DataSourceId" Type="Int32" />
+          <Property Name="TaskType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_TaskAttach">
+          <Key>
+            <PropertyRef Name="TaskAttachId" />
+          </Key>
+          <Property Name="TaskAttachId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskId" Type="Int32" />
+          <Property Name="AttachId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_TaskAttachOperateLog">
+          <Key>
+            <PropertyRef Name="OperateLogId" />
+          </Key>
+          <Property Name="OperateLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="AttachId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_TaskNode">
+          <Key>
+            <PropertyRef Name="TaskNodeId" />
+          </Key>
+          <Property Name="TaskNodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NodeId" Type="Int32" Nullable="false" />
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <Property Name="NodeLevel" Type="Int32" />
+          <Property Name="NodeStatus" Type="Int32" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="AuditTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Wf_TaskOperate">
+          <Key>
+            <PropertyRef Name="TaskOperateId" />
+          </Key>
+          <Property Name="TaskOperateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskNodeId" Type="Int32" />
+          <Property Name="OperateUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OperateStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wf_TaskOperateLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskNodeId" Type="Int32" Nullable="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="Memo" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="LogTime" Type="DateTime" Precision="3" />
+          <Property Name="LogResult" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="NFMT_WorkFlow_ConnectStr" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Wf_AuditEmp" EntityType="Self.Wf_AuditEmp" />
+          <EntitySet Name="Wf_DataSource" EntityType="Self.Wf_DataSource" />
+          <EntitySet Name="Wf_FlowMaster" EntityType="Self.Wf_FlowMaster" />
+          <EntitySet Name="Wf_FlowMasterConfig" EntityType="Self.Wf_FlowMasterConfig" />
+          <EntitySet Name="Wf_Node" EntityType="Self.Wf_Node" />
+          <EntitySet Name="Wf_NodeCondition" EntityType="Self.Wf_NodeCondition" />
+          <EntitySet Name="Wf_NodeOperate" EntityType="Self.Wf_NodeOperate" />
+          <EntitySet Name="Wf_Task" EntityType="Self.Wf_Task" />
+          <EntitySet Name="Wf_TaskAttach" EntityType="Self.Wf_TaskAttach" />
+          <EntitySet Name="Wf_TaskAttachOperateLog" EntityType="Self.Wf_TaskAttachOperateLog" />
+          <EntitySet Name="Wf_TaskNode" EntityType="Self.Wf_TaskNode" />
+          <EntitySet Name="Wf_TaskOperate" EntityType="Self.Wf_TaskOperate" />
+          <EntitySet Name="Wf_TaskOperateLog" EntityType="Self.Wf_TaskOperateLog" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NFMT_WorkFlowModelStoreContainer" CdmEntityContainer="NFMT_WorkFlow_ConnectStr">
+          <EntitySetMapping Name="Wf_AuditEmp">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_AuditEmp">
+              <MappingFragment StoreEntitySet="Wf_AuditEmp">
+                <ScalarProperty Name="AuditEmpId" ColumnName="AuditEmpId" />
+                <ScalarProperty Name="AuditEmpType" ColumnName="AuditEmpType" />
+                <ScalarProperty Name="ValueId" ColumnName="ValueId" />
+                <ScalarProperty Name="AuditEmpStatus" ColumnName="AuditEmpStatus" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_DataSource">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_DataSource">
+              <MappingFragment StoreEntitySet="Wf_DataSource">
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="BaseName" ColumnName="BaseName" />
+                <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+                <ScalarProperty Name="DataStatus" ColumnName="DataStatus" />
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="DalName" ColumnName="DalName" />
+                <ScalarProperty Name="AssName" ColumnName="AssName" />
+                <ScalarProperty Name="ViewUrl" ColumnName="ViewUrl" />
+                <ScalarProperty Name="RefusalUrl" ColumnName="RefusalUrl" />
+                <ScalarProperty Name="SuccessUrl" ColumnName="SuccessUrl" />
+                <ScalarProperty Name="ConditionUrl" ColumnName="ConditionUrl" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="ApplyTime" ColumnName="ApplyTime" />
+                <ScalarProperty Name="ApplyTitle" ColumnName="ApplyTitle" />
+                <ScalarProperty Name="ApplyMemo" ColumnName="ApplyMemo" />
+                <ScalarProperty Name="ApplyInfo" ColumnName="ApplyInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_FlowMaster">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_FlowMaster">
+              <MappingFragment StoreEntitySet="Wf_FlowMaster">
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="MasterName" ColumnName="MasterName" />
+                <ScalarProperty Name="MasterStatus" ColumnName="MasterStatus" />
+                <ScalarProperty Name="ViewUrl" ColumnName="ViewUrl" />
+                <ScalarProperty Name="ConditionUrl" ColumnName="ConditionUrl" />
+                <ScalarProperty Name="SuccessUrl" ColumnName="SuccessUrl" />
+                <ScalarProperty Name="RefusalUrl" ColumnName="RefusalUrl" />
+                <ScalarProperty Name="ViewTitle" ColumnName="ViewTitle" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LastModifyId" ColumnName="LastModifyId" />
+                <ScalarProperty Name="LastModifyTime" ColumnName="LastModifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_FlowMasterConfig">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_FlowMasterConfig">
+              <MappingFragment StoreEntitySet="Wf_FlowMasterConfig">
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="CanPassAudit" ColumnName="CanPassAudit" />
+                <ScalarProperty Name="IsSeries" ColumnName="IsSeries" />
+                <ScalarProperty Name="RefuseUrl" ColumnName="RefuseUrl" />
+                <ScalarProperty Name="ConfigStatus" ColumnName="ConfigStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_Node">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_Node">
+              <MappingFragment StoreEntitySet="Wf_Node">
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="NodeStatus" ColumnName="NodeStatus" />
+                <ScalarProperty Name="NodeName" ColumnName="NodeName" />
+                <ScalarProperty Name="NodeType" ColumnName="NodeType" />
+                <ScalarProperty Name="IsFirst" ColumnName="IsFirst" />
+                <ScalarProperty Name="IsLast" ColumnName="IsLast" />
+                <ScalarProperty Name="PreNodeId" ColumnName="PreNodeId" />
+                <ScalarProperty Name="AuditEmpId" ColumnName="AuditEmpId" />
+                <ScalarProperty Name="AuthGroupId" ColumnName="AuthGroupId" />
+                <ScalarProperty Name="NodeLevel" ColumnName="NodeLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_NodeCondition">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_NodeCondition">
+              <MappingFragment StoreEntitySet="Wf_NodeCondition">
+                <ScalarProperty Name="ConditionId" ColumnName="ConditionId" />
+                <ScalarProperty Name="ConditionStatus" ColumnName="ConditionStatus" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+                <ScalarProperty Name="ConditionType" ColumnName="ConditionType" />
+                <ScalarProperty Name="LogicType" ColumnName="LogicType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_NodeOperate">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_NodeOperate">
+              <MappingFragment StoreEntitySet="Wf_NodeOperate">
+                <ScalarProperty Name="OperateId" ColumnName="OperateId" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="OperateUrl" ColumnName="OperateUrl" />
+                <ScalarProperty Name="OperateStatus" ColumnName="OperateStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_Task">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_Task">
+              <MappingFragment StoreEntitySet="Wf_Task">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="TaskConnext" ColumnName="TaskConnext" />
+                <ScalarProperty Name="TaskStatus" ColumnName="TaskStatus" />
+                <ScalarProperty Name="DataSourceId" ColumnName="DataSourceId" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_TaskAttach">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_TaskAttach">
+              <MappingFragment StoreEntitySet="Wf_TaskAttach">
+                <ScalarProperty Name="TaskAttachId" ColumnName="TaskAttachId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="AttachId" ColumnName="AttachId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_TaskAttachOperateLog">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_TaskAttachOperateLog">
+              <MappingFragment StoreEntitySet="Wf_TaskAttachOperateLog">
+                <ScalarProperty Name="OperateLogId" ColumnName="OperateLogId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="AttachId" ColumnName="AttachId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_TaskNode">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_TaskNode">
+              <MappingFragment StoreEntitySet="Wf_TaskNode">
+                <ScalarProperty Name="TaskNodeId" ColumnName="TaskNodeId" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="NodeLevel" ColumnName="NodeLevel" />
+                <ScalarProperty Name="NodeStatus" ColumnName="NodeStatus" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="AuditTime" ColumnName="AuditTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_TaskOperate">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_TaskOperate">
+              <MappingFragment StoreEntitySet="Wf_TaskOperate">
+                <ScalarProperty Name="TaskOperateId" ColumnName="TaskOperateId" />
+                <ScalarProperty Name="TaskNodeId" ColumnName="TaskNodeId" />
+                <ScalarProperty Name="OperateUrl" ColumnName="OperateUrl" />
+                <ScalarProperty Name="OperateStatus" ColumnName="OperateStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wf_TaskOperateLog">
+            <EntityTypeMapping TypeName="NFMT_WorkFlowModel.Wf_TaskOperateLog">
+              <MappingFragment StoreEntitySet="Wf_TaskOperateLog">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="TaskNodeId" ColumnName="TaskNodeId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="LogResult" ColumnName="LogResult" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
