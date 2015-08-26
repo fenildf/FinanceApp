@@ -133,7 +133,7 @@
       <DependentUpon>Basic.tt</DependentUpon>
     </Compile>
     <Compile Include="CorpDept.cs">
-      <DependentUpon>User.tt</DependentUpon>
+      <DependentUpon>Basic.tt</DependentUpon>
     </Compile>
     <Compile Include="CorpDetailAttach.cs">
       <DependentUpon>User.tt</DependentUpon>
@@ -439,10 +439,7 @@
       <LastGenOutput>WorkFlow.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Basic\" />
-    <Folder Include="User\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

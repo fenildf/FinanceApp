@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace FinanceApp.Common
+namespace FinanceApp.IDAL
 {
-    public interface IBaseOperate<T>
+    public interface IBaseDAL<T>
     {
+        DbContext CurrentContext { get; }
+
         T Add(T entity);
 
         int Count(Expression<Func<T, bool>> predicate);
