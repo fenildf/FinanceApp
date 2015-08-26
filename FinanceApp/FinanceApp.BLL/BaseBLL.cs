@@ -1,53 +1,34 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using FinanceApp.IDAL;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FinanceApp.BLL
 {
-    public abstract class BaseBLL<T> : IBaseDAL<T> where T : class
+    public abstract class BaseBLL<T>
     {
-        public abstract DbContext CurrentContext { get; }
+        protected IDAL.IBaseDAL<T> DALInstance { get; set; }
 
-        public virtual T Add(T entity)
+        protected BaseBLL(IDAL.IBaseDAL<T> currentDAL)
         {
-            throw new NotImplementedException();
+            DALInstance = currentDAL;
         }
 
-        public virtual int Count(Expression<Func<T, bool>> predicate)
+        protected virtual T Add(T entity)
         {
-            throw new NotImplementedException();
+            return DALInstance.Add(entity);
         }
 
-        public virtual bool Update(T entity)
+        protected virtual bool Update(T entity)
         {
-            throw new NotImplementedException();
+            return DALInstance.Update(entity);
         }
 
-        public virtual bool Invalid(T entity)
+        protected virtual T Find(Expression<Func<T, bool>> whereLambda)
         {
-            throw new NotImplementedException();
-        }
-
-        public virtual bool Exist(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual T Find(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual IQueryable<T> FindList<S>(Expression<Func<T, bool>> whereLambda, bool isAsc, Expression<Func<T, S>> orderLambda)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<T> FindPageList<S>(int pageIndex, int pageSize, out int totalRecord, Expression<Func<T, bool>> whereLambda, bool isAsc, Expression<Func<T, S>> orderLambda)
-        {
-            throw new NotImplementedException();
+            return DALInstance.Find(whereLambda);
         }
     }
 }

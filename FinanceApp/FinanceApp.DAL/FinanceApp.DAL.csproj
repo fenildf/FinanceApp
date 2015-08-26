@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDAL.cs" />
+    <Compile Include="Basic\AreaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,11 +55,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Basic\" />
     <Folder Include="Finance\" />
     <Folder Include="Sms\" />
     <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FinanceApp.IDAL\FinanceApp.IDAL.csproj">
+      <Project>{a7ae3a3e-4720-461e-ab13-b4e1585b8ae4}</Project>
+      <Name>FinanceApp.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FinanceApp.Model\FinanceApp.Model.csproj">
+      <Project>{3db64a98-4932-4aea-884c-f960d0fbe1e8}</Project>
+      <Name>FinanceApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
