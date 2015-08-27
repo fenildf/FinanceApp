@@ -109,6 +109,19 @@
     <Compile Include="User\IRoleDeptMenuDAL.cs" />
     <Compile Include="User\IRoleMenuDAL.cs" />
     <Compile Include="User\IRoleMenuOperateDAL.cs" />
+    <Compile Include="WorkFlow\IAuditEmpDAL.cs" />
+    <Compile Include="WorkFlow\IDataSourceDAL.cs" />
+    <Compile Include="WorkFlow\IFlowMasterConfigDAL.cs" />
+    <Compile Include="WorkFlow\IFlowMasterDAL.cs" />
+    <Compile Include="WorkFlow\INodeConditionDAL.cs" />
+    <Compile Include="WorkFlow\INodeDAL.cs" />
+    <Compile Include="WorkFlow\INodeOperateDAL.cs" />
+    <Compile Include="WorkFlow\ITaskAttachDAL.cs" />
+    <Compile Include="WorkFlow\ITaskAttachOperateLogDAL.cs" />
+    <Compile Include="WorkFlow\ITaskDAL.cs" />
+    <Compile Include="WorkFlow\ITaskNodeDAL.cs" />
+    <Compile Include="WorkFlow\ITaskOperateDAL.cs" />
+    <Compile Include="WorkFlow\ITaskOperateLogDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinanceApp.Common\FinanceApp.Common.csproj">
@@ -124,9 +137,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WorkFlow\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

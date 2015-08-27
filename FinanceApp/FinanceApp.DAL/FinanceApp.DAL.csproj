@@ -109,14 +109,25 @@
     <Compile Include="User\RoleDeptMenuDAL.cs" />
     <Compile Include="User\RoleMenuDAL.cs" />
     <Compile Include="User\RoleMenuOperateDAL.cs" />
+    <Compile Include="WorkFlow\AuditEmpDAL.cs" />
+    <Compile Include="WorkFlow\DataSourceDAL.cs" />
+    <Compile Include="WorkFlow\FlowMasterConfigDAL.cs" />
+    <Compile Include="WorkFlow\FlowMasterDAL.cs" />
+    <Compile Include="WorkFlow\NodeConditionDAL.cs" />
+    <Compile Include="WorkFlow\NodeDAL.cs" />
+    <Compile Include="WorkFlow\NodeOperateDAL.cs" />
+    <Compile Include="WorkFlow\TaskAttachDAL.cs" />
+    <Compile Include="WorkFlow\TaskAttachOperateLogDAL.cs" />
+    <Compile Include="WorkFlow\TaskDAL.cs" />
+    <Compile Include="WorkFlow\TaskNodeDAL.cs" />
+    <Compile Include="WorkFlow\TaskOperateDAL.cs" />
+    <Compile Include="WorkFlow\TaskOperateLogDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WorkFlow\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FinanceApp.IDAL\FinanceApp.IDAL.csproj">
       <Project>{a7ae3a3e-4720-461e-ab13-b4e1585b8ae4}</Project>

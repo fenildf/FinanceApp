@@ -103,13 +103,24 @@
     <Compile Include="User\RoleDeptMenuBLL.cs" />
     <Compile Include="User\RoleMenuBLL.cs" />
     <Compile Include="User\RoleMenuOperateBLL.cs" />
+    <Compile Include="WorkFlow\AuditEmpBLL.cs" />
+    <Compile Include="WorkFlow\DataSourceBLL.cs" />
+    <Compile Include="WorkFlow\FlowMasterBLL.cs" />
+    <Compile Include="WorkFlow\FlowMasterConfigBLL.cs" />
+    <Compile Include="WorkFlow\NodeBLL.cs" />
+    <Compile Include="WorkFlow\NodeConditionBLL.cs" />
+    <Compile Include="WorkFlow\NodeOperateBLL.cs" />
+    <Compile Include="WorkFlow\TaskAttachBLL.cs" />
+    <Compile Include="WorkFlow\TaskAttachOperateLogBLL.cs" />
+    <Compile Include="WorkFlow\TaskBLL.cs" />
+    <Compile Include="WorkFlow\TaskNodeBLL.cs" />
+    <Compile Include="WorkFlow\TaskOperateBLL.cs" />
+    <Compile Include="WorkFlow\TaskOperateLogBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WorkFlow\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FinanceApp.IDAL\FinanceApp.IDAL.csproj">
       <Project>{a7ae3a3e-4720-461e-ab13-b4e1585b8ae4}</Project>
