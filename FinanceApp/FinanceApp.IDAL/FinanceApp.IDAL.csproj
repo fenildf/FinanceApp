@@ -60,7 +60,6 @@
     <Compile Include="Basic\IContractClauseDAL.cs" />
     <Compile Include="Basic\IContractClauseDetailDAL.cs" />
     <Compile Include="Basic\IContractMasterDAL.cs" />
-    <Compile Include="Basic\ICorpDeptDAL.cs" />
     <Compile Include="Basic\ICurrencyDAL.cs" />
     <Compile Include="Basic\IDeliverPlaceDAL.cs" />
     <Compile Include="Basic\IExchangeDAL.cs" />
@@ -84,6 +83,32 @@
     <Compile Include="Sms\ISmsDetailDAL.cs" />
     <Compile Include="Sms\ISmsParameterDAL.cs" />
     <Compile Include="Sms\ISmsTypeDAL.cs" />
+    <Compile Include="User\IAccountDAL.cs" />
+    <Compile Include="User\IAuthGroupDAL.cs" />
+    <Compile Include="User\IAuthGroupDetailDAL.cs" />
+    <Compile Include="User\IAuthOperateDAL.cs" />
+    <Compile Include="User\IAuthOptionDAL.cs" />
+    <Compile Include="User\IAuthOptionDetailDAL.cs" />
+    <Compile Include="User\IAuthOptionDetailEmpDAL.cs" />
+    <Compile Include="User\IBlocDAL.cs" />
+    <Compile Include="User\IContactDAL.cs" />
+    <Compile Include="User\ICorpDeptDAL.cs" />
+    <Compile Include="User\ICorpDetailAttachDAL.cs" />
+    <Compile Include="User\ICorporationDAL.cs" />
+    <Compile Include="User\ICorporationDetailDAL.cs" />
+    <Compile Include="User\IDepartmentDAL.cs" />
+    <Compile Include="User\IDeptEmpDAL.cs" />
+    <Compile Include="User\IEmpAuthGroupDAL.cs" />
+    <Compile Include="User\IEmployeeContactDAL.cs" />
+    <Compile Include="User\IEmployeeDAL.cs" />
+    <Compile Include="User\IEmpMenuDAL.cs" />
+    <Compile Include="User\IEmpRoleDAL.cs" />
+    <Compile Include="User\IMenuDAL.cs" />
+    <Compile Include="User\IRoleDAL.cs" />
+    <Compile Include="User\IRoleDeptDAL.cs" />
+    <Compile Include="User\IRoleDeptMenuDAL.cs" />
+    <Compile Include="User\IRoleMenuDAL.cs" />
+    <Compile Include="User\IRoleMenuOperateDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinanceApp.Common\FinanceApp.Common.csproj">
@@ -100,7 +125,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

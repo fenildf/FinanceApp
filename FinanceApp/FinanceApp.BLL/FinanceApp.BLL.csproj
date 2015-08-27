@@ -55,7 +55,6 @@
     <Compile Include="Basic\ContractClauseBLL.cs" />
     <Compile Include="Basic\ContractClauseDetailBLL.cs" />
     <Compile Include="Basic\ContractMasterBLL.cs" />
-    <Compile Include="Basic\CorpDeptBLL.cs" />
     <Compile Include="Basic\CurrencyBLL.cs" />
     <Compile Include="Basic\DeliverPlaceBLL.cs" />
     <Compile Include="Basic\ExchangeBLL.cs" />
@@ -78,12 +77,37 @@
     <Compile Include="Sms\SmsDetailBLL.cs" />
     <Compile Include="Sms\SmsParameterBLL.cs" />
     <Compile Include="Sms\SmsTypeBLL.cs" />
+    <Compile Include="User\AccountBLL.cs" />
+    <Compile Include="User\AuthGroupBLL.cs" />
+    <Compile Include="User\AuthGroupDetailBLL.cs" />
+    <Compile Include="User\AuthOperateBLL.cs" />
+    <Compile Include="User\AuthOptionBLL.cs" />
+    <Compile Include="User\AuthOptionDetailBLL.cs" />
+    <Compile Include="User\AuthOptionDetailEmpBLL.cs" />
+    <Compile Include="User\BlocBLL.cs" />
+    <Compile Include="User\ContactBLL.cs" />
+    <Compile Include="User\CorpDeptBLL.cs" />
+    <Compile Include="User\CorpDetailAttachBLL.cs" />
+    <Compile Include="User\CorporationBLL.cs" />
+    <Compile Include="User\CorporationDetailBLL.cs" />
+    <Compile Include="User\DepartmentBLL.cs" />
+    <Compile Include="User\DeptEmpBLL.cs" />
+    <Compile Include="User\EmpAuthGroupBLL.cs" />
+    <Compile Include="User\EmployeeBLL.cs" />
+    <Compile Include="User\EmployeeContactBLL.cs" />
+    <Compile Include="User\EmpMenuBLL.cs" />
+    <Compile Include="User\EmpRoleBLL.cs" />
+    <Compile Include="User\MenuBLL.cs" />
+    <Compile Include="User\RoleBLL.cs" />
+    <Compile Include="User\RoleDeptBLL.cs" />
+    <Compile Include="User\RoleDeptMenuBLL.cs" />
+    <Compile Include="User\RoleMenuBLL.cs" />
+    <Compile Include="User\RoleMenuOperateBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
   </ItemGroup>
   <ItemGroup>

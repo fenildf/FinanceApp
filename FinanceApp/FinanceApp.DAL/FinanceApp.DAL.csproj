@@ -61,7 +61,6 @@
     <Compile Include="Basic\ContractClauseDAL.cs" />
     <Compile Include="Basic\ContractClauseDetailDAL.cs" />
     <Compile Include="Basic\ContractMasterDAL.cs" />
-    <Compile Include="Basic\CorpDeptDAL.cs" />
     <Compile Include="Basic\CurrencyDAL.cs" />
     <Compile Include="Basic\DeliverPlaceDAL.cs" />
     <Compile Include="Basic\ExchangeDAL.cs" />
@@ -84,13 +83,38 @@
     <Compile Include="Sms\SmsDetailDAL.cs" />
     <Compile Include="Sms\SmsParameterDAL.cs" />
     <Compile Include="Sms\SmsTypeDAL.cs" />
+    <Compile Include="User\AccountDAL.cs" />
+    <Compile Include="User\AuthGroupDAL.cs" />
+    <Compile Include="User\AuthGroupDetailDAL.cs" />
+    <Compile Include="User\AuthOperateDAL.cs" />
+    <Compile Include="User\AuthOptionDAL.cs" />
+    <Compile Include="User\AuthOptionDetailDAL.cs" />
+    <Compile Include="User\AuthOptionDetailEmpDAL.cs" />
+    <Compile Include="User\BlocDAL.cs" />
+    <Compile Include="User\ContactDAL.cs" />
+    <Compile Include="User\CorpDeptDAL.cs" />
+    <Compile Include="User\CorpDetailAttachDAL.cs" />
+    <Compile Include="User\CorporationDAL.cs" />
+    <Compile Include="User\CorporationDetailDAL.cs" />
+    <Compile Include="User\DepartmentDAL.cs" />
+    <Compile Include="User\DeptEmpDAL.cs" />
+    <Compile Include="User\EmpAuthGroupDAL.cs" />
+    <Compile Include="User\EmployeeContactDAL.cs" />
+    <Compile Include="User\EmployeeDAL.cs" />
+    <Compile Include="User\EmpMenuDAL.cs" />
+    <Compile Include="User\EmpRoleDAL.cs" />
+    <Compile Include="User\MenuDAL.cs" />
+    <Compile Include="User\RoleDAL.cs" />
+    <Compile Include="User\RoleDeptDAL.cs" />
+    <Compile Include="User\RoleDeptMenuDAL.cs" />
+    <Compile Include="User\RoleMenuDAL.cs" />
+    <Compile Include="User\RoleMenuOperateDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
   </ItemGroup>
   <ItemGroup>
