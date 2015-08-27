@@ -79,6 +79,11 @@
     <Compile Include="Finance\IStockNoDAL.cs" />
     <Compile Include="IBaseDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sms\ISmsConfigDAL.cs" />
+    <Compile Include="Sms\ISmsDAL.cs" />
+    <Compile Include="Sms\ISmsDetailDAL.cs" />
+    <Compile Include="Sms\ISmsParameterDAL.cs" />
+    <Compile Include="Sms\ISmsTypeDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinanceApp.Common\FinanceApp.Common.csproj">
@@ -95,7 +100,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sms\" />
     <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
   </ItemGroup>

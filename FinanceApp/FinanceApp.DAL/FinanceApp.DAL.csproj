@@ -79,13 +79,17 @@
     <Compile Include="Finance\RepoApplyDetailDAL.cs" />
     <Compile Include="Finance\StockNoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sms\SmsConfigDAL.cs" />
+    <Compile Include="Sms\SmsDAL.cs" />
+    <Compile Include="Sms\SmsDetailDAL.cs" />
+    <Compile Include="Sms\SmsParameterDAL.cs" />
+    <Compile Include="Sms\SmsTypeDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sms\" />
     <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
   </ItemGroup>
