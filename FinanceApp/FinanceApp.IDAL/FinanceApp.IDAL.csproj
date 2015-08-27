@@ -47,6 +47,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basic\IAreaDAL.cs" />
+    <Compile Include="Basic\IAssetDAL.cs" />
+    <Compile Include="Basic\IBankAccountDAL.cs" />
+    <Compile Include="Basic\IBankDAL.cs" />
+    <Compile Include="Basic\IBDStatusDAL.cs" />
+    <Compile Include="Basic\IBDStatusDetailDAL.cs" />
+    <Compile Include="Basic\IBDStyleDAL.cs" />
+    <Compile Include="Basic\IBDStyleDetailDAL.cs" />
+    <Compile Include="Basic\IBrandAssetDAL.cs" />
+    <Compile Include="Basic\IBrandDAL.cs" />
+    <Compile Include="Basic\IClauseContractDAL.cs" />
+    <Compile Include="Basic\IContractClauseDAL.cs" />
+    <Compile Include="Basic\IContractClauseDetailDAL.cs" />
+    <Compile Include="Basic\IContractMasterDAL.cs" />
+    <Compile Include="Basic\ICorpDeptDAL.cs" />
+    <Compile Include="Basic\ICurrencyDAL.cs" />
+    <Compile Include="Basic\IDeliverPlaceDAL.cs" />
+    <Compile Include="Basic\IExchangeDAL.cs" />
+    <Compile Include="Basic\IFuturesCodeDAL.cs" />
+    <Compile Include="Basic\IFuturesPriceDAL.cs" />
+    <Compile Include="Basic\IMeasureUnitDAL.cs" />
+    <Compile Include="Basic\IParameterDAL.cs" />
+    <Compile Include="Basic\IPriceAuthorityDAL.cs" />
+    <Compile Include="Basic\IProducerDAL.cs" />
+    <Compile Include="Basic\IRateDAL.cs" />
     <Compile Include="IBaseDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

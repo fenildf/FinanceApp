@@ -42,6 +42,30 @@
   <ItemGroup>
     <Compile Include="BaseBLL.cs" />
     <Compile Include="Basic\AreaBLL.cs" />
+    <Compile Include="Basic\AssetBLL.cs" />
+    <Compile Include="Basic\BankAccountBLL.cs" />
+    <Compile Include="Basic\BankBLL.cs" />
+    <Compile Include="Basic\BDStatusBLL.cs" />
+    <Compile Include="Basic\BDStatusDetailBLL.cs" />
+    <Compile Include="Basic\BDStyleBLL.cs" />
+    <Compile Include="Basic\BDStyleDetailBLL.cs" />
+    <Compile Include="Basic\BrandAssetBLL.cs" />
+    <Compile Include="Basic\BrandBLL.cs" />
+    <Compile Include="Basic\ClauseContractBLL.cs" />
+    <Compile Include="Basic\ContractClauseBLL.cs" />
+    <Compile Include="Basic\ContractClauseDetailBLL.cs" />
+    <Compile Include="Basic\ContractMasterBLL.cs" />
+    <Compile Include="Basic\CorpDeptBLL.cs" />
+    <Compile Include="Basic\CurrencyBLL.cs" />
+    <Compile Include="Basic\DeliverPlaceBLL.cs" />
+    <Compile Include="Basic\ExchangeBLL.cs" />
+    <Compile Include="Basic\FuturesCodeBLL.cs" />
+    <Compile Include="Basic\FuturesPriceBLL.cs" />
+    <Compile Include="Basic\MeasureUnitBLL.cs" />
+    <Compile Include="Basic\ParameterBLL.cs" />
+    <Compile Include="Basic\PriceAuthorityBLL.cs" />
+    <Compile Include="Basic\ProducerBLL.cs" />
+    <Compile Include="Basic\RateBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +81,10 @@
     <ProjectReference Include="..\FinanceApp.IDAL\FinanceApp.IDAL.csproj">
       <Project>{a7ae3a3e-4720-461e-ab13-b4e1585b8ae4}</Project>
       <Name>FinanceApp.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FinanceApp.Model\FinanceApp.Model.csproj">
+      <Project>{3db64a98-4932-4aea-884c-f960d0fbe1e8}</Project>
+      <Name>FinanceApp.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

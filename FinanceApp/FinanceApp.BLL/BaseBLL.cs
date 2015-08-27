@@ -9,26 +9,26 @@ namespace FinanceApp.BLL
 {
     public abstract class BaseBLL<T>
     {
-        protected IDAL.IBaseDAL<T> DALInstance { get; set; }
+        protected IDAL.IBaseDAL<T> CurDALInstance { get; set; }
 
         protected BaseBLL(IDAL.IBaseDAL<T> currentDAL)
         {
-            DALInstance = currentDAL;
+            CurDALInstance = currentDAL;
         }
 
         protected virtual T Add(T entity)
         {
-            return DALInstance.Add(entity);
+            return CurDALInstance.Add(entity);
         }
 
         protected virtual bool Update(T entity)
         {
-            return DALInstance.Update(entity);
+            return CurDALInstance.Update(entity);
         }
 
         protected virtual T Find(Expression<Func<T, bool>> whereLambda)
         {
-            return DALInstance.Find(whereLambda);
+            return CurDALInstance.Find(whereLambda);
         }
     }
 }
