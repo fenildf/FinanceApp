@@ -66,13 +66,18 @@
     <Compile Include="Basic\PriceAuthorityBLL.cs" />
     <Compile Include="Basic\ProducerBLL.cs" />
     <Compile Include="Basic\RateBLL.cs" />
+    <Compile Include="Finance\PledgeApplyBLL.cs" />
+    <Compile Include="Finance\PledgeApplyCashDetailBLL.cs" />
+    <Compile Include="Finance\PledgeApplyStockDetailBLL.cs" />
+    <Compile Include="Finance\RepoApplyBLL.cs" />
+    <Compile Include="Finance\RepoApplyDetailBLL.cs" />
+    <Compile Include="Finance\StockNoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Finance\" />
     <Folder Include="Sms\" />
     <Folder Include="User\" />
     <Folder Include="WorkFlow\" />

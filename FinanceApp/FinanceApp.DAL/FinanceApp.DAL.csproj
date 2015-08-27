@@ -72,6 +72,12 @@
     <Compile Include="Basic\PriceAuthorityDAL.cs" />
     <Compile Include="Basic\ProducerDAL.cs" />
     <Compile Include="Basic\RateDAL.cs" />
+    <Compile Include="Finance\PledgeApplyCashDetailDAL.cs" />
+    <Compile Include="Finance\PledgeApplyDAL.cs" />
+    <Compile Include="Finance\PledgeApplyStockDetailDAL.cs" />
+    <Compile Include="Finance\RepoApplyDAL.cs" />
+    <Compile Include="Finance\RepoApplyDetailDAL.cs" />
+    <Compile Include="Finance\StockNoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +85,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Finance\" />
     <Folder Include="Sms\" />
     <Folder Include="User\" />
     <Folder Include="WorkFlow\" />
