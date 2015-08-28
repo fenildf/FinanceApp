@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>登录_<%=NFMT.Common.DefaultValue.SystemName%></title>
-    <meta name="keywords" content="<%=NFMT.Common.DefaultValue.SystemName%>" />
+    <title>登录_@FinanceApp.Common.DefaultValue.SystemName</title>
+    <meta name="keywords" content="@FinanceApp.Common.DefaultValue.SystemName" />
     <meta charset="utf-8">
-    <link href="css/home.css?v=2" rel="stylesheet" type="text/css" />
+    <link href="~/Content/home.css" rel="stylesheet" type="text/css" />
     <script src="/Content/jqwidgets/styles/jqx.base.css" type="text/css"></script>
     <script src="/Content/jqwidgets/styles/jqx.metro.css" type="text/css"></script>
     <script src="/Content/jqwidgets/scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@
     <div style="text-align:center;">
         <div class="header">
             <h1 class="headerLogo">
-                <a title="<%=NFMT.Common.DefaultValue.SystemName%>" target="_blank" href="#"><img src="@Url.Content("~Content/images/maike.png")" alt="迈科" width="200" /> </a>
+                <a title="<%=NFMT.Common.DefaultValue.SystemName%>" target="_blank" href="#"><img src="/Content/images/maike.png" alt="迈科" width="200" /> </a>
             </h1>
             <div class="headerNav">发现价值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创造价值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享价值</div>
         </div>
@@ -47,7 +47,7 @@
         </script>
         <div class="container">
             <div class="register-box">
-                <div class="reg-slogan"><%=NFMT.Common.DefaultValue.SystemName%></div>
+                <div class="reg-slogan">@FinanceApp.Common.DefaultValue.SystemName</div>
                 <div class="reg-form" id="js-form-mobile">
                     <br>
                     <div class="cell">
@@ -61,8 +61,6 @@
                     </div>
                 </div>
                 <script type="text/javascript">
-
-
                     $("#txbUserName").focus();
 
                     //验证器
@@ -91,26 +89,27 @@
                         if (!isCanSubmit) { return; }
 
                         try {
-                            $.post("Handler/LoginHandler.ashx", {
-                                u: $("#txbUserName").val(), p: $("#txbPassWord").val()
+                            $.get("/api/HomeAPI/Login", {
+                                "accountName": $("#txbUserName").val(), "passWord": $("#txbPassWord").val()
                             }, function (result) {
+                                alert(result);
+
                                 var obj = JSON.parse(result);
                                 if (obj.ResultStatus.toString() !== "0") {
                                     alert(obj.Message);
                                 } else {
                                     //setCookie("<%=NFMT.Common.DefaultValue.CookieName%>", obj.ReturnValue, 1);
-
-                                    var url = GetUrlParam("redirectUrl");
+                                    alert("成功");
+                                    @*var url = GetUrlParam("redirectUrl");
                                     if (url)
                                         window.location.href = url;
                                     else
-                                        window.location.href = "<%=NFMT.Common.DefaultValue.NfmtSiteName%>";
-                            }
-                        });
+                                        window.location.href = "@FinanceApp.Common.DefaultValue.SiteName";*@
+                                        }
+                            });
                         } catch (e) {
                             alert(e.message);
                         }
-
                     }
                 </script>
             </div>

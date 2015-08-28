@@ -3,10 +3,10 @@
 // 文件名：IRoleMenuDAL.cs
 // 文件功能描述：角色菜单关联表dbo.RoleMenu数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class RoleMenuBLL : BaseBLL<RoleMenu>
     {
-        public RoleMenuBLL(IBaseDAL<RoleMenu> currentDAL) : base(currentDAL) { }
+        private readonly RoleMenuDAL rolemenuDAL = new RoleMenuDAL();
+        
+        protected override BaseDAL<RoleMenu> CurDALInstance{
+            get{return rolemenuDAL;}
+        }
     }
 }

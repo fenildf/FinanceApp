@@ -3,10 +3,10 @@
 // 文件名：IDeptEmpDAL.cs
 // 文件功能描述：员工部门表dbo.DeptEmp数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class DeptEmpBLL : BaseBLL<DeptEmp>
     {
-        public DeptEmpBLL(IBaseDAL<DeptEmp> currentDAL) : base(currentDAL) { }
+        private readonly DeptEmpDAL deptempDAL = new DeptEmpDAL();
+        
+        protected override BaseDAL<DeptEmp> CurDALInstance{
+            get{return deptempDAL;}
+        }
     }
 }

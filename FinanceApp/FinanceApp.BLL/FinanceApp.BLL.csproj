@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -119,9 +123,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\FinanceApp.Common\FinanceApp.Common.csproj">
+      <Project>{989fff38-8bd4-4951-a1ce-d846838d7df4}</Project>
+      <Name>FinanceApp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FinanceApp.DAL\FinanceApp.DAL.csproj">
+      <Project>{0522aa6d-8e54-4b55-81d5-1c8b67206976}</Project>
+      <Name>FinanceApp.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FinanceApp.IDAL\FinanceApp.IDAL.csproj">
       <Project>{a7ae3a3e-4720-461e-ab13-b4e1585b8ae4}</Project>
       <Name>FinanceApp.IDAL</Name>

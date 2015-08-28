@@ -3,10 +3,10 @@
 // 文件名：IFin_PledgeApplyDAL.cs
 // 文件功能描述：融资头寸质押申请单dbo.Fin_PledgeApply数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Fin_PledgeApplyBLL : BaseBLL<Fin_PledgeApply>
     {
-        public Fin_PledgeApplyBLL(IBaseDAL<Fin_PledgeApply> currentDAL) : base(currentDAL) { }
+        private readonly Fin_PledgeApplyDAL fin_pledgeapplyDAL = new Fin_PledgeApplyDAL();
+        
+        protected override BaseDAL<Fin_PledgeApply> CurDALInstance{
+            get{return fin_pledgeapplyDAL;}
+        }
     }
 }

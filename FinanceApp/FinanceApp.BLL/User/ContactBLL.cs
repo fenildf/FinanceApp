@@ -3,10 +3,10 @@
 // 文件名：IContactDAL.cs
 // 文件功能描述：联系人dbo.Contact数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class ContactBLL : BaseBLL<Contact>
     {
-        public ContactBLL(IBaseDAL<Contact> currentDAL) : base(currentDAL) { }
+        private readonly ContactDAL contactDAL = new ContactDAL();
+        
+        protected override BaseDAL<Contact> CurDALInstance{
+            get{return contactDAL;}
+        }
     }
 }

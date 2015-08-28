@@ -3,10 +3,10 @@
 // 文件名：IFuturesPriceDAL.cs
 // 文件功能描述：期货价格表dbo.FuturesPrice数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class FuturesPriceBLL : BaseBLL<FuturesPrice>
     {
-        public FuturesPriceBLL(IBaseDAL<FuturesPrice> currentDAL) : base(currentDAL) { }
+        private readonly FuturesPriceDAL futurespriceDAL = new FuturesPriceDAL();
+        
+        protected override BaseDAL<FuturesPrice> CurDALInstance{
+            get{return futurespriceDAL;}
+        }
     }
 }

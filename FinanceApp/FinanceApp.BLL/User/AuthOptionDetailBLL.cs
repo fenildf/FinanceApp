@@ -3,10 +3,10 @@
 // 文件名：IAuthOptionDetailDAL.cs
 // 文件功能描述：权限项明细dbo.AuthOptionDetail数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class AuthOptionDetailBLL : BaseBLL<AuthOptionDetail>
     {
-        public AuthOptionDetailBLL(IBaseDAL<AuthOptionDetail> currentDAL) : base(currentDAL) { }
+        private readonly AuthOptionDetailDAL authoptiondetailDAL = new AuthOptionDetailDAL();
+        
+        protected override BaseDAL<AuthOptionDetail> CurDALInstance{
+            get{return authoptiondetailDAL;}
+        }
     }
 }

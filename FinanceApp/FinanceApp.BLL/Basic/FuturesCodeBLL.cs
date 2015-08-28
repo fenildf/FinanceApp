@@ -3,10 +3,10 @@
 // 文件名：IFuturesCodeDAL.cs
 // 文件功能描述：期货合约dbo.FuturesCode数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class FuturesCodeBLL : BaseBLL<FuturesCode>
     {
-        public FuturesCodeBLL(IBaseDAL<FuturesCode> currentDAL) : base(currentDAL) { }
+        private readonly FuturesCodeDAL futurescodeDAL = new FuturesCodeDAL();
+        
+        protected override BaseDAL<FuturesCode> CurDALInstance{
+            get{return futurescodeDAL;}
+        }
     }
 }

@@ -3,10 +3,10 @@
 // 文件名：IBrandAssetDAL.cs
 // 文件功能描述：品牌品种关联表dbo.BrandAsset数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class BrandAssetBLL : BaseBLL<BrandAsset>
     {
-        public BrandAssetBLL(IBaseDAL<BrandAsset> currentDAL) : base(currentDAL) { }
+        private readonly BrandAssetDAL brandassetDAL = new BrandAssetDAL();
+        
+        protected override BaseDAL<BrandAsset> CurDALInstance{
+            get{return brandassetDAL;}
+        }
     }
 }

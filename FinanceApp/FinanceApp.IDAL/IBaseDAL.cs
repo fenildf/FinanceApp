@@ -25,5 +25,6 @@ namespace FinanceApp.IDAL
 
         IQueryable<T> FindPageList<S>(int pageIndex, int pageSize, out int totalRecord,
             Expression<Func<T, bool>> whereLambda, bool isAsc, Expression<Func<T, S>> orderLambda);
+
     }
 }

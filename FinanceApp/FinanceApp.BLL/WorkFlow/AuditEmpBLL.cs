@@ -3,10 +3,10 @@
 // 文件名：IWf_AuditEmpDAL.cs
 // 文件功能描述：审核人表dbo.Wf_AuditEmp数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Wf_AuditEmpBLL : BaseBLL<Wf_AuditEmp>
     {
-        public Wf_AuditEmpBLL(IBaseDAL<Wf_AuditEmp> currentDAL) : base(currentDAL) { }
+        private readonly Wf_AuditEmpDAL wf_auditempDAL = new Wf_AuditEmpDAL();
+        
+        protected override BaseDAL<Wf_AuditEmp> CurDALInstance{
+            get{return wf_auditempDAL;}
+        }
     }
 }

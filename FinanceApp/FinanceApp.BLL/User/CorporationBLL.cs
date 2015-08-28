@@ -3,10 +3,10 @@
 // 文件名：ICorporationDAL.cs
 // 文件功能描述：公司dbo.Corporation数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class CorporationBLL : BaseBLL<Corporation>
     {
-        public CorporationBLL(IBaseDAL<Corporation> currentDAL) : base(currentDAL) { }
+        private readonly CorporationDAL corporationDAL = new CorporationDAL();
+        
+        protected override BaseDAL<Corporation> CurDALInstance{
+            get{return corporationDAL;}
+        }
     }
 }

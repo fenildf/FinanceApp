@@ -3,10 +3,10 @@
 // 文件名：IEmployeeContactDAL.cs
 // 文件功能描述：联系人员工关系表dbo.EmployeeContact数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class EmployeeContactBLL : BaseBLL<EmployeeContact>
     {
-        public EmployeeContactBLL(IBaseDAL<EmployeeContact> currentDAL) : base(currentDAL) { }
+        private readonly EmployeeContactDAL employeecontactDAL = new EmployeeContactDAL();
+        
+        protected override BaseDAL<EmployeeContact> CurDALInstance{
+            get{return employeecontactDAL;}
+        }
     }
 }

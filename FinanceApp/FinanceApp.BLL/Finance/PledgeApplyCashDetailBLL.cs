@@ -3,10 +3,10 @@
 // 文件名：IFin_PledgeApplyCashDetailDAL.cs
 // 文件功能描述：质押申请单期货头寸明细dbo.Fin_PledgeApplyCashDetail数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Fin_PledgeApplyCashDetailBLL : BaseBLL<Fin_PledgeApplyCashDetail>
     {
-        public Fin_PledgeApplyCashDetailBLL(IBaseDAL<Fin_PledgeApplyCashDetail> currentDAL) : base(currentDAL) { }
+        private readonly Fin_PledgeApplyCashDetailDAL fin_pledgeapplycashdetailDAL = new Fin_PledgeApplyCashDetailDAL();
+        
+        protected override BaseDAL<Fin_PledgeApplyCashDetail> CurDALInstance{
+            get{return fin_pledgeapplycashdetailDAL;}
+        }
     }
 }

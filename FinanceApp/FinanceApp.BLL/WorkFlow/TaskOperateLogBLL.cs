@@ -3,10 +3,10 @@
 // 文件名：IWf_TaskOperateLogDAL.cs
 // 文件功能描述：任务操作记录表dbo.Wf_TaskOperateLog数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Wf_TaskOperateLogBLL : BaseBLL<Wf_TaskOperateLog>
     {
-        public Wf_TaskOperateLogBLL(IBaseDAL<Wf_TaskOperateLog> currentDAL) : base(currentDAL) { }
+        private readonly Wf_TaskOperateLogDAL wf_taskoperatelogDAL = new Wf_TaskOperateLogDAL();
+        
+        protected override BaseDAL<Wf_TaskOperateLog> CurDALInstance{
+            get{return wf_taskoperatelogDAL;}
+        }
     }
 }

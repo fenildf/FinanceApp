@@ -3,10 +3,10 @@
 // 文件名：IProducerDAL.cs
 // 文件功能描述：生产商dbo.Producer数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class ProducerBLL : BaseBLL<Producer>
     {
-        public ProducerBLL(IBaseDAL<Producer> currentDAL) : base(currentDAL) { }
+        private readonly ProducerDAL producerDAL = new ProducerDAL();
+        
+        protected override BaseDAL<Producer> CurDALInstance{
+            get{return producerDAL;}
+        }
     }
 }

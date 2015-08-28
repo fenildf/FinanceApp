@@ -6,6 +6,7 @@
 // 创建时间： 2015年8月27日
 ----------------------------------------------------------------*/
 
+using FinanceApp.Common;
 using FinanceApp.Model;
 
 namespace FinanceApp.IDAL
@@ -15,5 +16,6 @@ namespace FinanceApp.IDAL
     /// </summary>
     public interface IAccountDAL : IBaseDAL<Account>
     {
+        ResultModel CheckLogin(string accountName, string passWord);
     }
 }

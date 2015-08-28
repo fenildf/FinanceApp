@@ -3,10 +3,10 @@
 // 文件名：IEmpMenuDAL.cs
 // 文件功能描述：员工菜单关系表dbo.EmpMenu数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class EmpMenuBLL : BaseBLL<EmpMenu>
     {
-        public EmpMenuBLL(IBaseDAL<EmpMenu> currentDAL) : base(currentDAL) { }
+        private readonly EmpMenuDAL empmenuDAL = new EmpMenuDAL();
+        
+        protected override BaseDAL<EmpMenu> CurDALInstance{
+            get{return empmenuDAL;}
+        }
     }
 }

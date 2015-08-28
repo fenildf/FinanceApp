@@ -3,10 +3,10 @@
 // 文件名：IBrandDAL.cs
 // 文件功能描述：品牌dbo.Brand数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class BrandBLL : BaseBLL<Brand>
     {
-        public BrandBLL(IBaseDAL<Brand> currentDAL) : base(currentDAL) { }
+        private readonly BrandDAL brandDAL = new BrandDAL();
+        
+        protected override BaseDAL<Brand> CurDALInstance{
+            get{return brandDAL;}
+        }
     }
 }

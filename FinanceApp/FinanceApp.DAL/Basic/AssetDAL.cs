@@ -3,23 +3,29 @@
 // 文件名：IAssetDAL.cs
 // 文件功能描述：品种表dbo.Asset数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月28日
+// 创建时间： 2015年8月27日
 ----------------------------------------------------------------*/
 
-using FinanceApp.DAL;
+using System;
+using System.Data.Entity;
+using FinanceApp.IDAL;
 using FinanceApp.Model;
 
-namespace FinanceApp.BLL
+namespace FinanceApp.DAL
 {
     /// <summary>
     /// 品种表dbo.Asset数据交互接口。
     /// </summary>
-    public class AssetBLL : BaseBLL<Asset>
+    public class AssetDAL : BaseDAL<Asset>,IAssetDAL
     {
-        private readonly AssetDAL assetDAL = new AssetDAL();
-        
-        protected override BaseDAL<Asset> CurDALInstance{
-            get{return assetDAL;}
+        public override DbContext CurrentContext
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override bool Invalid(Asset entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

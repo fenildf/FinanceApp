@@ -3,10 +3,10 @@
 // 文件名：ISm_SmsParameterDAL.cs
 // 文件功能描述：消息类型构造参数dbo.Sm_SmsParameter数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Sm_SmsParameterBLL : BaseBLL<Sm_SmsParameter>
     {
-        public Sm_SmsParameterBLL(IBaseDAL<Sm_SmsParameter> currentDAL) : base(currentDAL) { }
+        private readonly Sm_SmsParameterDAL sm_smsparameterDAL = new Sm_SmsParameterDAL();
+        
+        protected override BaseDAL<Sm_SmsParameter> CurDALInstance{
+            get{return sm_smsparameterDAL;}
+        }
     }
 }

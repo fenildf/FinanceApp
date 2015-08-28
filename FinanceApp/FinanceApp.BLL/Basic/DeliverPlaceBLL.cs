@@ -3,10 +3,10 @@
 // 文件名：IDeliverPlaceDAL.cs
 // 文件功能描述：交货地dbo.DeliverPlace数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class DeliverPlaceBLL : BaseBLL<DeliverPlace>
     {
-        public DeliverPlaceBLL(IBaseDAL<DeliverPlace> currentDAL) : base(currentDAL) { }
+        private readonly DeliverPlaceDAL deliverplaceDAL = new DeliverPlaceDAL();
+        
+        protected override BaseDAL<DeliverPlace> CurDALInstance{
+            get{return deliverplaceDAL;}
+        }
     }
 }

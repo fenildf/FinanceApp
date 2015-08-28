@@ -3,10 +3,10 @@
 // 文件名：IAuthOperateDAL.cs
 // 文件功能描述：操作权限表dbo.AuthOperate数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class AuthOperateBLL : BaseBLL<AuthOperate>
     {
-        public AuthOperateBLL(IBaseDAL<AuthOperate> currentDAL) : base(currentDAL) { }
+        private readonly AuthOperateDAL authoperateDAL = new AuthOperateDAL();
+        
+        protected override BaseDAL<AuthOperate> CurDALInstance{
+            get{return authoperateDAL;}
+        }
     }
 }

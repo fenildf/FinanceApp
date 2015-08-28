@@ -129,6 +129,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\FinanceApp.Common\FinanceApp.Common.csproj">
+      <Project>{989fff38-8bd4-4951-a1ce-d846838d7df4}</Project>
+      <Name>FinanceApp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FinanceApp.IDAL\FinanceApp.IDAL.csproj">
       <Project>{a7ae3a3e-4720-461e-ab13-b4e1585b8ae4}</Project>
       <Name>FinanceApp.IDAL</Name>

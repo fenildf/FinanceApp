@@ -3,10 +3,10 @@
 // 文件名：IRoleDeptDAL.cs
 // 文件功能描述：角色部门关联表dbo.RoleDept数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class RoleDeptBLL : BaseBLL<RoleDept>
     {
-        public RoleDeptBLL(IBaseDAL<RoleDept> currentDAL) : base(currentDAL) { }
+        private readonly RoleDeptDAL roledeptDAL = new RoleDeptDAL();
+        
+        protected override BaseDAL<RoleDept> CurDALInstance{
+            get{return roledeptDAL;}
+        }
     }
 }

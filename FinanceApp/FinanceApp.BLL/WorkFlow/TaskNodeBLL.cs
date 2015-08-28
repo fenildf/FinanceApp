@@ -3,10 +3,10 @@
 // 文件名：IWf_TaskNodeDAL.cs
 // 文件功能描述：任务节点dbo.Wf_TaskNode数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Wf_TaskNodeBLL : BaseBLL<Wf_TaskNode>
     {
-        public Wf_TaskNodeBLL(IBaseDAL<Wf_TaskNode> currentDAL) : base(currentDAL) { }
+        private readonly Wf_TaskNodeDAL wf_tasknodeDAL = new Wf_TaskNodeDAL();
+        
+        protected override BaseDAL<Wf_TaskNode> CurDALInstance{
+            get{return wf_tasknodeDAL;}
+        }
     }
 }

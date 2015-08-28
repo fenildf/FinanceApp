@@ -3,10 +3,10 @@
 // 文件名：ISm_SmsDetailDAL.cs
 // 文件功能描述：消息明细表dbo.Sm_SmsDetail数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class Sm_SmsDetailBLL : BaseBLL<Sm_SmsDetail>
     {
-        public Sm_SmsDetailBLL(IBaseDAL<Sm_SmsDetail> currentDAL) : base(currentDAL) { }
+        private readonly Sm_SmsDetailDAL sm_smsdetailDAL = new Sm_SmsDetailDAL();
+        
+        protected override BaseDAL<Sm_SmsDetail> CurDALInstance{
+            get{return sm_smsdetailDAL;}
+        }
     }
 }

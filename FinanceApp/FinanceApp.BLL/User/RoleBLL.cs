@@ -3,10 +3,10 @@
 // 文件名：IRoleDAL.cs
 // 文件功能描述：角色dbo.Role数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class RoleBLL : BaseBLL<Role>
     {
-        public RoleBLL(IBaseDAL<Role> currentDAL) : base(currentDAL) { }
+        private readonly RoleDAL roleDAL = new RoleDAL();
+        
+        protected override BaseDAL<Role> CurDALInstance{
+            get{return roleDAL;}
+        }
     }
 }

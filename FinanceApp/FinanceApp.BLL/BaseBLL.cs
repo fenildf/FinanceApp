@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using FinanceApp.DAL;
+using log4net;
 
 namespace FinanceApp.BLL
 {
-    public abstract class BaseBLL<T>
+    public abstract class BaseBLL<T> where T : class
     {
-        protected IDAL.IBaseDAL<T> CurDALInstance { get; set; }
+        protected ILog log = LogManager.GetLogger(typeof(BaseBLL<T>));
 
-        protected BaseBLL(IDAL.IBaseDAL<T> currentDAL)
-        {
-            CurDALInstance = currentDAL;
-        }
+        protected  abstract BaseDAL<T> CurDALInstance { get; }
 
         protected virtual T Add(T entity)
         {

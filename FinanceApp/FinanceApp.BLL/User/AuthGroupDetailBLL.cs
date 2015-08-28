@@ -3,10 +3,10 @@
 // 文件名：IAuthGroupDetailDAL.cs
 // 文件功能描述：员工权限组关联表dbo.AuthGroupDetail数据交互接口。
 // 创建人：CodeSmith
-// 创建时间： 2015年8月27日
+// 创建时间： 2015年8月28日
 ----------------------------------------------------------------*/
 
-using FinanceApp.IDAL;
+using FinanceApp.DAL;
 using FinanceApp.Model;
 
 namespace FinanceApp.BLL
@@ -16,6 +16,10 @@ namespace FinanceApp.BLL
     /// </summary>
     public class AuthGroupDetailBLL : BaseBLL<AuthGroupDetail>
     {
-        public AuthGroupDetailBLL(IBaseDAL<AuthGroupDetail> currentDAL) : base(currentDAL) { }
+        private readonly AuthGroupDetailDAL authgroupdetailDAL = new AuthGroupDetailDAL();
+        
+        protected override BaseDAL<AuthGroupDetail> CurDALInstance{
+            get{return authgroupdetailDAL;}
+        }
     }
 }
