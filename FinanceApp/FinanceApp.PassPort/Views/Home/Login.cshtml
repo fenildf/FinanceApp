@@ -89,7 +89,7 @@
                         if (!isCanSubmit) { return; }
 
                         try {
-                            $.get("/api/HomeAPI/Login", {
+                            $.get("/api/Values", {
                                 "accountName": $("#txbUserName").val(), "passWord": $("#txbPassWord").val()
                             }, function (result) {
                                 alert(result);
