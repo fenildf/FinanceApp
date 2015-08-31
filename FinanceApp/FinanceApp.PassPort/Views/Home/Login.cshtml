@@ -9,8 +9,10 @@
     <meta name="keywords" content="@FinanceApp.Common.DefaultValue.SystemName" />
     <meta charset="utf-8">
     <link href="~/Content/home.css" rel="stylesheet" type="text/css" />
-    <script src="/Content/jqwidgets/styles/jqx.base.css" type="text/css"></script>
-    <script src="/Content/jqwidgets/styles/jqx.metro.css" type="text/css"></script>
+    <script src="/Content/jqwidgets/styles/jqx.base.css" type="text/css">
+    </script>
+    <script src="/Content/jqwidgets/styles/jqx.metro.css" type="text/css">
+    </script>
     <script src="/Content/jqwidgets/scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="/Content/jqwidgets/scripts/jqx-all.js" type="text/javascript"></script>
 
@@ -51,7 +53,7 @@
                 <div class="reg-form" id="js-form-mobile">
                     <br>
                     <div class="cell">
-                        <input type="text" name="mobile" id="txbUserName" class="text"  maxlength="20" placeholder="用户名" />
+                        <input type="text" name="mobile" id="txbUserName" class="text" maxlength="20" placeholder="用户名" />
                     </div>
                     <div class="cell">
                         <input type="password" name="passwd" id="txbPassWord" class="text" placeholder="密码" onkeydown="javascript:EnterClick(event);" />
@@ -66,10 +68,10 @@
                     //验证器
                     $("#js-form-mobile").jqxValidator({
                         rules:
-                            [
-                                { input: "#txbUserName", message: "用户名不可为空", action: "keyup", rule: "required" },
-                                { input: "#txbPassWord", message: "密码不可为空", action: "keyup", rule: "required" }
-                            ]
+                        [
+                            { input: "#txbUserName", message: "用户名不可为空", action: "keyup", rule: "required" },
+                            { input: "#txbPassWord", message: "密码不可为空", action: "keyup", rule: "required" }
+                        ]
                     });
 
                     function setCookie(c_name, value, expiredays) {
@@ -81,35 +83,45 @@
                     function GetUrlParam(name) {
                         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
                         var r = window.location.search.substr(1).match(reg);
-                        if (r != null) return unescape(r[2]); return null;
+                        if (r != null) return unescape(r[2]);
+                        return null;
                     }
 
                     function login() {
                         var isCanSubmit = $("#js-form-mobile").jqxValidator("validate");
-                        if (!isCanSubmit) { return; }
+                        if (!isCanSubmit) {
+                            return;
+                        }
 
-                        try {
-                            $.get("/api/Values", {
-                                "accountName": $("#txbUserName").val(), "passWord": $("#txbPassWord").val()
-                            }, function (result) {
-                                alert(result);
+                        var json = {
+                            userName: $("#txbUserName").val(),
+                            password: $("#txbPassWord").val()
+                        }
 
-                                var obj = JSON.parse(result);
+                        $.ajax({
+                            url: "/api/Test/Login",
+                            type: "post",
+                            dataType: "json",
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify(json),
+                            success: function (data) {
+                                var obj = JSON.parse(data);
                                 if (obj.ResultStatus.toString() !== "0") {
                                     alert(obj.Message);
                                 } else {
                                     //setCookie("<%=NFMT.Common.DefaultValue.CookieName%>", obj.ReturnValue, 1);
                                     alert("成功");
-                                    @*var url = GetUrlParam("redirectUrl");
+                                    var url = GetUrlParam("redirectUrl");
                                     if (url)
                                         window.location.href = url;
                                     else
-                                        window.location.href = "@FinanceApp.Common.DefaultValue.SiteName";*@
-                                        }
+                                        window.location.href = "@FinanceApp.Common.DefaultValue.SiteName";
+                                }
+                            }
+                        }).fail(
+                            function(xhr, textStatus, err) {
+                                alert('Error: ' + err);
                             });
-                        } catch (e) {
-                            alert(e.message);
-                        }
                     }
                 </script>
             </div>
