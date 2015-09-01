@@ -65,13 +65,23 @@ namespace FinanceApp.DAL
         }
 
         /// <summary>
-        /// 
+        /// 返回符合条件的单个model
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
         public virtual T Find(Expression<Func<T, bool>> predicate)
         {
             return CurrentContext.Set<T>().FirstOrDefault<T>(predicate);
+        }
+
+        /// <summary>
+        /// 返回符合条件的所有model
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public virtual IQueryable<T> Load(Expression<Func<T, bool>> predicate)
+        {
+            return CurrentContext.Set<T>().Where<T>(predicate);
         }
 
         public virtual IQueryable<T> FindList<S>(Expression<Func<T, bool>> whereLambda, bool isAsc, Expression<Func<T, S>> orderLambda)

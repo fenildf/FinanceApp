@@ -7,7 +7,11 @@
 ----------------------------------------------------------------*/
 
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using FinanceApp.Common;
 using FinanceApp.IDAL;
 using FinanceApp.Model;
 
@@ -20,12 +24,35 @@ namespace FinanceApp.DAL
     {
         public override DbContext CurrentContext
         {
-            get { throw new NotImplementedException(); }
+            get { return new Model.NFMT_User_ConnectStr(); }
         }
 
         public override bool Invalid(Menu entity)
         {
             throw new NotImplementedException();
+        }
+
+        public ResultModel Load(int empId)
+        {
+            ResultModel result = new ResultModel();
+
+            try
+            {
+                string cmdText = string.Format(" select distinct m.* from dbo.AuthOperate ao left join dbo.Menu m on ao.MenuId = m.MenuId where ao.EmpId ={0} and ao.AuthOperateStatus={1} and m.MenuStatus={1} union select distinct mParent.* from dbo.EmpMenu em left join dbo.Menu m on em.MenuId = m.MenuId left join dbo.Menu mParent on mParent.MenuId = m.ParentId where em.EmpId ={1} and em.RefStatus={1} and ISNULL(mParent.MenuId,0)<>0 and mParent.MenuStatus={1}", empId, (int)Common.StatusEnum.已生效);
+
+                var menus = CurrentContext.Set<Menu>().SqlQuery(cmdText, null).ToListAsync();
+
+                result.AffectCount = menus.Result.Count;
+                result.Message = "获取列表成功";
+                result.ResultStatus = 0;
+                result.ReturnValue = menus;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
         }
     }
 }
